@@ -1,0 +1,30 @@
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+   a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cccccc;
+  a {
+    margin: 0.5em 1em;
+  }
+  .login {
+    vertical-align: middle;
+  }
+}
+
+
