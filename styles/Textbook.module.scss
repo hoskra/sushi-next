@@ -52,6 +52,24 @@
   }
 }
 
+.starRating {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-align: right;
+}
+
+.on {
+  @extend .starRating;
+  color: #000;
+}
+
+.off {
+  @extend .starRating;
+  color: #ccc;
+}
+
 .textbookView {
   display: grid;
   grid-template-columns: 1fr 5fr;

@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons'
+import StarRating from '../../components/StarRating'
 
 
 export default function Textbook(props) {

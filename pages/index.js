@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Textbook from './textbooks'
+import React, { useState } from "react";
 
 const data = [
   {
@@ -27,6 +28,9 @@ const data = [
 ]
 
 export default function Home() {
+
+  const [query, setQuery] = useState('')
+
   return (
     <>
     <Head>
@@ -34,11 +38,21 @@ export default function Home() {
       <meta name="description" content="SUSHI Textbooks" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-
-    {data.map((textbook, index) => (
-      <Textbook key={index} data={textbook} />
-    ))}
-
+    
+    <div>
+      <input placeholder="Search" onChange={event => setQuery(event.target.value)} />
+    {
+      data.filter(textbook => {
+        if (query === '') {
+          return textbook;
+        } else if (textbook.title.toLowerCase().includes(query.toLowerCase())) {
+          return textbook;
+        }
+      }).map((textbook, index) => (
+        <Textbook key={index} data={textbook} />
+      ))
+    }
+    </div>
     </>
   )
 }
