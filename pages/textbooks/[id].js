@@ -1,9 +1,8 @@
 import styles from '../../styles/Textbook.module.scss'
 import { useRouter } from 'next/router'
 import Head from 'next/dist/shared/lib/head'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar as farFaStar } from '@fortawesome/free-regular-svg-icons'
 import StarRating from '../../components/StarRating'
+import Favourite from '../../components/Favourite'
 
 export default function TextbookView({texbook}) {
   const router = useRouter()
@@ -25,9 +24,9 @@ export default function TextbookView({texbook}) {
 
       <div className={styles.textbookView}>
         <h1 className={styles.title}>{texbook.title}</h1>
-        <span className={styles.modification}>last modified {texbook.modification}</span>
+        <Favourite />
         <span className={styles.author}>by {texbook.author}</span>
-        <StarRating numOfStars={texbook.stars} />
+        <StarRating numOfStars={texbook.stars}/>
         <span className={styles.pageName}>First Page</span>
         <p className={styles.pageContent}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur sagittis hendrerit ante. Fusce nibh. Nam sed tellus id magna elementum tincidunt. Fusce suscipit libero eget elit. Donec quis nibh at felis congue commodo. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.</p>
       </div>
