@@ -17,7 +17,7 @@ export default function Navbar() {
           <Link href="/user">
             <a >User <FontAwesomeIcon className={styles.login} icon={faUserAlt} /></a>
           </Link>
-          <Link href="/user">
+          <Link href="/">
             <a >Login <FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
           </Link>
         </div>

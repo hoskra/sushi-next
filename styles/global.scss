@@ -35,7 +35,7 @@ main {
 
 ::selection {
   background: lighten($color: $primary-color, $amount: 20%);
-  color: #000;
+  color: white;
 }
 
 .search-bar-container {
@@ -74,7 +74,7 @@ main {
     margin:  0.1em;
     border-bottom: none;
   }
-  margin:  0.3em;
+  margin:  0.5em;
 }
 
 .tools {
@@ -82,8 +82,10 @@ main {
   display: flex;
   justify-content: space-between;
   button {
-    padding: 0.5em;
     margin-bottom: 0.5em;
+  }
+  svg {
+    vertical-align: middle;
   }
 }
 
@@ -95,7 +97,7 @@ main {
     background-color: lighten($color: $secondary-color, $amount: 5%);
     color: lighten($color: $secondary-color, $amount: 20%);
   }
-  padding: 0 1em;
+  padding: 0.5em 1em;
   background-color: $primary-color;
   color: white;
 }

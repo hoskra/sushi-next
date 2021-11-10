@@ -20,6 +20,10 @@ nav.menu{
   width: 100vw;
   background-color:  $primary-color;
   display: block;
+  color: white;
+  a:hover {
+    color: lighten($color: $secondary-color, $amount: 20%);
+  }
 }
 
 .container {
