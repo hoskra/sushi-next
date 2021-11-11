@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Textbook from './textbooks'
 import React, { useState } from "react";
+import { useSelector } from 'react-redux'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -51,8 +52,12 @@ const data = [
   },
 ]
 
+const defaultBookmarks = ["Trending"];
+const loggedInBookmarks = ["Trending", "Shared with me", "My Textbooks", "Favourites"];
+
 export default function Home() {
   const [query, setQuery] = useState('')
+  const loggedIn = useSelector((state) => state.user.value)
 
   return (
     <>
@@ -70,10 +75,9 @@ export default function Home() {
 
       <div className="tools">
       <ul className="bookmarks">
-        <li>Trending</li>
-        <li>Shared with me</li>
-        <li>My textbooks</li>
-        <li>Favourites</li>
+
+        {loggedIn ? loggedInBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>) : defaultBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>)}
+        {console.log(loggedIn)}
       </ul>
 
         <button className="sushi-button">Add new textbook <FontAwesomeIcon icon={faPlus} /> </button>

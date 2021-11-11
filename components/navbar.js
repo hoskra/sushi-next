@@ -3,8 +3,14 @@ import styles from '../styles/Layout.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux'
+import { logOut } from '../redux/userSlice'
+import { useDispatch } from 'react-redux'
 
 export default function Navbar() {
+  const loggedIn = useSelector((state) => state.user.value)
+  const dispatch = useDispatch()
+
   return (
     <nav className={styles.menu}>
       <div className={styles.container}>
@@ -17,9 +23,16 @@ export default function Navbar() {
           <Link href="/user">
             <a >User <FontAwesomeIcon className={styles.login} icon={faUserAlt} /></a>
           </Link>
-          <Link href="/">
-            <a >Login <FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
-          </Link>
+          {
+            loggedIn ?
+            <Link href="/">
+              <a onClick={() => dispatch(logOut())}>Sign Out<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+            </Link>
+            :
+            <Link href="/signin">
+              <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+            </Link>
+          }
         </div>
       </div>
     </nav>
