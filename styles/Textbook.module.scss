@@ -60,6 +60,11 @@
       }
     }
   }
+  aside {
+    display: grid;
+    row-gap: 1.5rem;
+    grid-template-rows: 1.8em auto;
+  }
 }
 
 .starRating {
@@ -82,8 +87,9 @@
 
 .textbookView {
   display: grid;
-  grid-template-columns: 2fr 4fr 3fr;
-  grid-auto-rows: 2em 2.5em 2em auto;
+  grid-template-columns: auto auto auto;
+  grid-auto-rows: auto auto auto auto;
+  row-gap: 0.5rem;
   .title { display: grid; grid-column: 1/3;  }
   .pageName { display: grid; grid-column: 1/3; }
   .favourites { display: grid; grid-column: 3/3; }
