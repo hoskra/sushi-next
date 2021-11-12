@@ -22,7 +22,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ├── components                # named, atomic part of page 
 ├── constants                 # constants, placeholder data
 ├── node_modules                  
-├── pages                     # accesable URL paths
+├── pages                     # accessible URL paths
+│   ├── ...                              
 │   ├── signin                              
 │   │   └── index.js          # "/signin"
 │   ├── textbooks              
@@ -33,6 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ├── public                   
 ├── redux                     # state management             
 └── styles                     
+   ├── ...                              
    ├── global.scss            # styles available for every page
    ├── variables.scss         # variables that can be imported
    └── Textbook.module.scss   # styles for named scope
