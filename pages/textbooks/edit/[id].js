@@ -17,7 +17,11 @@ export default function TextbookEdit({textbook}) {
       <div className={styles.textbookContainer}>
 
         <aside>
-          <h1>{textbook.title}</h1>
+          <Link href={"/textbooks/" + textbook.id} >
+            <a>
+              <h1>{textbook.title}</h1>
+            </a>
+          </Link>
 
           <div className={styles.group}>
             Collaborators
