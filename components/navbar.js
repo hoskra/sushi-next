@@ -20,9 +20,12 @@ export default function Navbar() {
           </a>
         </Link>
         <div>
-          <Link href="/user">
-            <a >User <FontAwesomeIcon className={styles.login} icon={faUserAlt} /></a>
-          </Link>
+          { 
+            loggedIn && 
+            <Link href="/user">
+              <a >User <FontAwesomeIcon className={styles.login} icon={faUserAlt} /></a>
+            </Link> 
+          }
           {
             loggedIn ?
             <Link href="/">

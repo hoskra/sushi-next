@@ -4,17 +4,21 @@ import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../redux/userSlice'
 
+import HeadComponent from '../../components/HeadComponent'
+
 export default function SignIn() {
   const dispatch = useDispatch()
 
   return (
     <>
-      <Link href={{ pathname: '/', }}>
+      <HeadComponent title={"SUSHI | Sign In"} description="SuperUltraSonicHyperInteractive TextBook"/>
+      <Link href='/' passHref>
         <button
           className="sushi-button"
           onClick={() => dispatch(logIn())}
           >
-            Sign in</button>
+            Sign in
+          </button>
       </Link>
     </>
   )

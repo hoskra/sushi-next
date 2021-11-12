@@ -1,40 +1,29 @@
-import Link from 'next/link'
 import styles from '../../styles/User.module.scss'
 
-import Textbook from '../textbooks'
+import HeadComponent from '../../components/HeadComponent'
+import TextbookCard from '../../components/TextbookCard'
 
-const data = [
-  {
-    id: 1,
-    title: "Atlas hub",
-    author: "Helmut",
-    modification: "24/10/2021",
-    stars: "7",
-  },
-  {
-    id: 4,
-    title: "Zahradničení",
-    author: "Helmut",
-    modification: "14/10/2021",
-    stars: "2",
-  },
-]
+import { userHelmut, dataHelmut } from '../../constants/data'
 
 export default function User() {
   return (
+    <>
+    <HeadComponent title={"SUSHI | " + userHelmut.name} description="SuperUltraSonicHyperInteractive TextBook"/>
+
     <div className={styles.container}>
       <div className={styles.user_info}>
         <div className={styles.photo}></div>
         <button className="sushi-button">Settings</button>
-        <h2 className={styles.name}>Helmut Větvička</h2>
-        <div className={styles.description}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.</div>
+        <h2 className={styles.name}>{userHelmut.name}</h2>
+        <div className={styles.description}>{userHelmut.description}</div>
       </div>
 
       <div className={styles.textbook_list}>
-        {data.map((textbook, index) => (
-          <Textbook key={index} data={textbook} />
+        {dataHelmut.map((textbook, index) => (
+          <TextbookCard key={index} data={textbook} />
           ))}
       </div>
     </div>
+    </>
   )
 }

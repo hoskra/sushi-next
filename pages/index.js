@@ -1,71 +1,19 @@
 import Head from 'next/head'
-import Textbook from './textbooks'
 import React, { useState } from "react";
-import { useSelector } from 'react-redux'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons'
-const data = [
-  {
-    id: 1,
-    title: "Atlas hub",
-    author: "Helmut",
-    modification: "24/10/2021",
-    stars: "7",
-    shared: false,
-    trending: false,
-    myTextbook: true,
-    favourites: false
-  },
-  {
-    id: 2,
-    title: "Hitchhiker's Guide to the Galaxy",
-    author: "Douglas Adams",
-    modification: "5/3/1979",
-    stars: "42",
-    shared: false,
-    trending: false,
-    myTextbook: false,
-    favourites: true
-  },
-  {
-    id: 3,
-    title: "Lorem ipsum dolor sit amet",
-    author: "Giovanni",
-    modification: "12/12/135",
-    stars: "2",
-    shared: true,
-    trending: false,
-    myTextbook: false,
-    favourites: false
-  },
-  {
-    id: 4,
-    title: "Zahradničení",
-    author: "Helmut",
-    modification: "14/10/2021",
-    stars: "2",
-    shared: true,
-    trending: false,
-    myTextbook: false,
-    favourites: false
-  },
-]
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const defaultBookmarks = ["Trending"];
-const loggedInBookmarks = ["Trending", "Shared with me", "My Textbooks", "Favourites"];
+import { data } from '../constants/data'
+import TextbookCard from '../components/TextbookCard'
+import HomepageTools from '../components/HomepageTools'
+import HeadComponent from '../components/HeadComponent'
 
 export default function Home() {
   const [query, setQuery] = useState('')
-  const loggedIn = useSelector((state) => state.user.value)
 
   return (
     <>
-    <Head>
-      <title>SUSHI Textbooks</title>
-      <meta name="description" content="SUSHI Textbooks" />
-      <link rel="icon" href="/sushi.svg" />
-    </Head>
+    <HeadComponent title="SUSHI Textbooks" description="SuperUltraSonicHyperInteractive TextBook"/>
 
     <div>
       <div className="search-bar-container">
@@ -73,15 +21,7 @@ export default function Home() {
         <input className="search-bar" placeholder="search" onChange={event => setQuery(event.target.value)} />
       </div>
 
-      <div className="tools">
-      <ul className="bookmarks">
-
-        {loggedIn ? loggedInBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>) : defaultBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>)}
-        {console.log(loggedIn)}
-      </ul>
-
-        <button className="sushi-button">Add new textbook <FontAwesomeIcon icon={faPlus} /> </button>
-      </div>
+    <HomepageTools/>
 
     <div className="textbook-list">
       {
@@ -92,7 +32,7 @@ export default function Home() {
             return textbook;
           }
         }).map((textbook, index) => (
-          <Textbook key={index} data={textbook} />
+          <TextbookCard key={index} data={textbook} />
         ))
       }
       </div>
