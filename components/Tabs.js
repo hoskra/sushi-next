@@ -1,18 +1,25 @@
 import React from "react";
 import { useSelector } from 'react-redux'
 
-const loggedInBookmarks = ["Trending", "Shared with me", "My Textbooks", "Favourites"];
-const defaultBookmarks = ["Trending"];
+import { useDispatch } from 'react-redux'
+import { trending, sharedWithMe, myTextbooks, favourites } from '../redux/tabSlice'
+
 
 export default function Tabs() {
-  const loggedIn = useSelector((state) => state.user.value)
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user.value);
+  const tabState = useSelector((state) => state.tab.value);
 
   return (
-    <ul className="bookmarks">
+    <ul className="tabs">
+      <li onClick={() => dispatch(trending())} className={tabState == 0 && "active"}>Trending</li>
       {loggedIn ? 
-        loggedInBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>) 
-        : defaultBookmarks.map(bookmark => <li key={bookmark}>{bookmark}</li>)
-      }
+        <>
+        <li onClick={() => dispatch(sharedWithMe())} className={tabState == 1 && "active"}>Shared with me</li>
+        <li onClick={() => dispatch(myTextbooks())} className={tabState == 2 && "active"}>My Textbooks</li>
+        <li onClick={() => dispatch(favourites())} className={tabState == 3 && "active"}>Favourites</li>
+        </>
+      : null}
     </ul>
   );
 };

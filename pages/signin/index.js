@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../redux/userSlice'
+import { trending } from '../../redux/tabSlice'
 
 import HeadComponent from '../../components/HeadComponent'
 
@@ -15,8 +16,7 @@ export default function SignIn() {
       <Link href='/' passHref>
         <button
           className="sushi-button"
-          onClick={() => dispatch(logIn())}
-          >
+          onClick={() => dispatch(logIn())}>
             Sign in
           </button>
       </Link>

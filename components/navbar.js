@@ -6,6 +6,7 @@ import { faUserAlt } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
 import { logOut } from '../redux/userSlice'
 import { useDispatch } from 'react-redux'
+import { trending } from '../redux/tabSlice'
 
 export default function Navbar() {
   const loggedIn = useSelector((state) => state.user.value)
@@ -29,7 +30,11 @@ export default function Navbar() {
           {
             loggedIn ?
             <Link href="/">
-              <a onClick={() => dispatch(logOut())}>Sign Out<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+              <a onClick={() => {
+                dispatch(logOut());
+                dispatch(trending());
+                }}>
+                Sign Out<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
             </Link>
             :
             <Link href="/signin">

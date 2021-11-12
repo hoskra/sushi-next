@@ -1,3 +1,10 @@
+export const filterData = {
+  0: [1, 2, 3, 4],
+  1: [2, 3],
+  2: [1, 4],
+  3: [2]
+}
+
 export const data = [
   {
     id: 1,

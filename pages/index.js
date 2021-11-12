@@ -2,14 +2,16 @@ import Head from 'next/head'
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux';
 
-import { data } from '../constants/data'
+import { data, filterData } from '../constants/data'
 import TextbookCard from '../components/TextbookCard'
 import HomepageTools from '../components/HomepageTools'
 import HeadComponent from '../components/HeadComponent'
 
 export default function Home() {
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useState('');
+  const tabState = useSelector((state) => state.tab.value)
 
   return (
     <>
@@ -26,10 +28,12 @@ export default function Home() {
     <div className="textbook-list">
       {
         data.filter(textbook => {
-          if (query === '') {
-            return textbook;
-          } else if (textbook.title.toLowerCase().includes(query.toLowerCase())) {
-            return textbook;
+          if(filterData[tabState].includes(textbook.id)) {
+            if (query === '') {
+              return textbook;
+            } else if (textbook.title.toLowerCase().includes(query.toLowerCase())) {
+              return textbook;
+            }
           }
         }).map((textbook, index) => (
           <TextbookCard key={index} data={textbook} />
