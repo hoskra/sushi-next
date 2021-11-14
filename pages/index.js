@@ -20,7 +20,7 @@ export default function Home() {
     <div>
       <div className="search-bar-container">
         <FontAwesomeIcon icon={faSearch} />
-        <input className="search-bar" placeholder="search" onChange={event => setQuery(event.target.value)} />
+        <input className="sushi-input" placeholder="search" onChange={event => setQuery(event.target.value)} />
       </div>
 
     <HomepageTools/>

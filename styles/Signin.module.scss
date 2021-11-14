@@ -1,0 +1,37 @@
+@import './variables.module.scss';
+
+.sign_in_form {
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid lighten($color: $secondary-color, $amount: 30%);
+  border-radius: 0.5em;
+  height: 100%;
+
+  .input label, input {
+    width: 100%;
+  }
+  input {
+    margin-bottom: 10px;
+  };
+  .alternative {
+    width: 100%;
+    margin: 1em;
+    text-align: center;
+    font-size: smaller;
+    color: lighten($color: #000000, $amount: 50%);
+  }
+  hr {
+      margin: 1em;
+  }
+  .socails, .submit {
+    display: flex;
+    margin: 0.5em 0;
+    justify-content: space-between;
+    svg {
+      vertical-align: middle;
+    }
+  }
+}
+

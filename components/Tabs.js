@@ -12,12 +12,12 @@ export default function Tabs() {
 
   return (
     <ul className="tabs">
-      <li onClick={() => dispatch(trending())} className={tabState == 0 && "active"}>Trending</li>
+      <li onClick={() => dispatch(trending())} className={tabState == 0 ? "active" : undefined}>Trending</li>
       {loggedIn ? 
         <>
-        <li onClick={() => dispatch(sharedWithMe())} className={tabState == 1 && "active"}>Shared with me</li>
-        <li onClick={() => dispatch(myTextbooks())} className={tabState == 2 && "active"}>My Textbooks</li>
-        <li onClick={() => dispatch(favourites())} className={tabState == 3 && "active"}>Favourites</li>
+        <li onClick={() => dispatch(sharedWithMe())} className={tabState == 1 ? "active" : undefined}>Shared with me</li>
+        <li onClick={() => dispatch(myTextbooks())} className={tabState == 2 ? "active" : undefined}>My Textbooks</li>
+        <li onClick={() => dispatch(favourites())} className={tabState == 3 ? "active" : undefined}>Favourites</li>
         </>
       : null}
     </ul>

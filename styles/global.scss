@@ -45,16 +45,21 @@ main {
   svg {
     vertical-align: middle;
   }
+  .sushi-input {
+    width: 20em;
+  }
 }
 
-.search-bar {
+.sushi-input {
   margin: 0 auto;
-  width: 20em;
   padding: 6px;
   border: 1px solid;
   border-color: lighten($color: $secondary-color, $amount: 20%);
   border-radius: 1em;
   font-size: 0.8em;
+  &:focus {
+    border-color: lighten($color: $primary-color, $amount: 20%);
+  }
 }
 
 .textbook-list {
