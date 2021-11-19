@@ -13,19 +13,21 @@ export default function Navbar() {
   const dispatch = useDispatch()
 
   return (
-    <nav className={styles.menu}>
-      <div className={styles.container}>
-        <Link href="/">
-          <a>
-            <h1>SUSHI Textbooks</h1>
-          </a>
-        </Link>
-        <div>
-          { 
-            loggedIn && 
+      <nav className={styles.menu}>
+        <div className={styles.container}>
+          <Link href="/">
+            <a>
+              <h1>SUSHI Textbooks</h1>
+            </a>
+          </Link>
+          {
+            loggedIn &&
             <Link href="/user">
-              <a >User <FontAwesomeIcon className={styles.login} icon={faUserAlt} /></a>
-            </Link> 
+              <a>
+                <span>User</span>
+                <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
+              </a>
+            </Link>
           }
           {
             loggedIn ?
@@ -34,14 +36,15 @@ export default function Navbar() {
                 dispatch(logOut());
                 dispatch(trending());
                 }}>
-                Sign Out<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+                <span>Sign Out</span>
+                <FontAwesomeIcon className={styles.login} icon={faSignInAlt} />
+              </a>
             </Link>
             :
             <Link href="/signin">
               <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
             </Link>
           }
-        </div>
       </div>
     </nav>
   )

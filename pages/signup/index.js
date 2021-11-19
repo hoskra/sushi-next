@@ -8,7 +8,7 @@ import { faGoogle, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-ic
 import { logIn } from '../../redux/userSlice'
 import HeadComponent from '../../components/HeadComponent'
 
-export default function SignIn() {
+export default function SignUp() {
   const dispatch = useDispatch()
 
   return (
@@ -17,11 +17,12 @@ export default function SignIn() {
 
       <form className={styles.sign_in_form}>
 
-      <div className={styles.form_title}>
-        <h2 className={styles.sign_in}>Sign In</h2>
-        <Link href='/signup' passHref>
-          <h2 className={styles.sign_up}>Sign Up</h2>
+      <div className={styles.form_title_}>
+
+        <Link href='/signin' passHref>
+          <h2 className={styles.sign_in}>Sign In</h2>
         </Link>
+        <h2 className={styles.sign_up}>Sign Up</h2>
 
 
       </div>
@@ -43,14 +44,14 @@ export default function SignIn() {
           <button
             className="sushi-button"
             onClick={() => dispatch(logIn())}>
-              Sign in
+              Sign Up
             </button>
         </Link>
         </div>
 
         <hr/>
 
-        <div className={styles.alternative}>Or Sign In using your account with:</div>
+        <div className={styles.alternative}>Or Sign Up using your account with:</div>
 
         <div className={styles.socails}>
           <button type="button" className="sushi-button">Google<FontAwesomeIcon icon={faGoogle} /></button>
