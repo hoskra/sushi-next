@@ -7,8 +7,21 @@ import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import HeadComponent from '../../../components/HeadComponent'
 import Toggle from '../../../components/Toggle'
 
-export default function TextbookEdit({textbook}) {
+import { data } from '../../../constants/data'
+
+export default function TextbookEdit() {
   const router = useRouter()
+  let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
+
+  if(textbook == undefined) {
+    textbook = {
+      id: 4,
+      title: "Zahradničení",
+      author: "Helmut",
+      modification: "14/10/2021",
+      stars: "2",
+    }
+  }
 
   return (
     <>
@@ -55,38 +68,9 @@ export default function TextbookEdit({textbook}) {
           <textarea className={styles.pageContent}
           defaultValue="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur sagittis hendrerit ante. Fusce nibh. Nam sed tellus id magna elementum tincidunt. Fusce suscipit libero eget elit. Donec quis nibh at felis congue commodo. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus."
           />
-
           <button className="sushi-button">Save</button>
         </div>
-
-
-
       </div>
     </>
   )
-}
-
-export async function getStaticProps({ params }) {
-  const req = await fetch( process.env.NODE_ENV === "production" ?
-    `https://sushi.netlify.app/${params.id}.json` : `http://localhost:3000/${params.id}.json` )
-  const data = await req.json()
-
-  return {
-    props: { textbook: data },
-  }
-}
-
-export async function getStaticPaths() {
-  const req = await fetch( process.env.NODE_ENV === "production" ?
-  "https://sushi.netlify.app/textbooks.json" : "http://localhost:3000/textbooks.json" )
-  const data = await req.json()
-
-  const paths = data.textbooks.map(textbook => {
-    return { params: { id: textbook, }, }
-  })
-
-  return {
-    paths,
-    fallback: false,
-  }
 }

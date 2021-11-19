@@ -36,6 +36,8 @@ export const data = [
   },
 ]
 
+export const paths = ["1", "2", "3", "4"]
+
 export const dataHelmut = [
   {
     id: 1,

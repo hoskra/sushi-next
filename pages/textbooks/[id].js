@@ -7,10 +7,22 @@ import StarRating from '../../components/StarRating'
 import Favourite from '../../components/Favourite'
 import HeadComponent from '../../components/HeadComponent'
 
-export default function TextbookView({textbook}) {
+import { data } from '../../constants/data'
+
+export default function TextbookView() {
   const router = useRouter()
-  const { title, author, modification, stars } = router.query
   const loggedIn = useSelector((state) => state.user.value)
+  let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
+
+  if(textbook == undefined) {
+    textbook = {
+      id: 4,
+      title: "Zahradničení",
+      author: "Helmut",
+      modification: "14/10/2021",
+      stars: "2",
+    }
+  }
 
   return (
     <>
@@ -18,8 +30,8 @@ export default function TextbookView({textbook}) {
 
       <div className={styles.textbookConteiner}>
 
-        <aside> 
-          { loggedIn && textbook.author == "Helmut" && 
+        <aside>
+          { loggedIn && textbook.author == "Helmut" &&
           <Link href={"/textbooks/edit/" + textbook.id} passHref>
             <button className="sushi-button">Edit</button>
           </Link>
@@ -33,6 +45,8 @@ export default function TextbookView({textbook}) {
           </ul>
         </aside>
 
+        {console.log(router.query.id)}
+
         <div className={styles.textbookView}>
           <h1 className={styles.title}>{textbook.title}</h1>
           <Favourite />
@@ -44,29 +58,4 @@ export default function TextbookView({textbook}) {
       </div>
     </>
   )
-}
-
-export async function getStaticProps({ params }) {
-  const req = await fetch( process.env.NODE_ENV === "production" ?
-    `https://sushi.netlify.app/${params.id}.json` : `http://localhost:3000/${params.id}.json` )
-  const data = await req.json()
-
-  return {
-    props: { textbook: data },
-  }
-}
-
-export async function getStaticPaths() {
-  const req = await fetch( process.env.NODE_ENV === "production" ?
-  "https://sushi.netlify.app/textbooks.json" : "http://localhost:3000/textbooks.json" )
-  const data = await req.json()
-
-  const paths = data.textbooks.map(textbook => {
-    return { params: { id: textbook, }, }
-  })
-
-  return {
-    paths,
-    fallback: false,
-  }
 }
