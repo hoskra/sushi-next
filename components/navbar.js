@@ -20,6 +20,7 @@ export default function Navbar() {
               <h1>SUSHI Textbooks</h1>
             </a>
           </Link>
+        <div className={styles.menu_items}>
           {
             loggedIn &&
             <Link href="/user">
@@ -45,6 +46,7 @@ export default function Navbar() {
               <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
             </Link>
           }
+        </div>
       </div>
     </nav>
   )
