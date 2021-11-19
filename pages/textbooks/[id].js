@@ -47,7 +47,8 @@ export default function TextbookView({textbook}) {
 }
 
 export async function getStaticProps({ params }) {
-  const req = await fetch(`http://localhost:3000/${params.id}.json`)
+  const req = await fetch( process.env.NODE_ENV === "production" ?
+    `https://sushi.netlify.app/${params.id}.json` : `http://localhost:3000/${params.id}.json` )
   const data = await req.json()
 
   return {
@@ -56,10 +57,11 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const req = await fetch('http://localhost:3000/textbooks.json')
+  const req = await fetch( process.env.NODE_ENV === "production" ?
+  "https://sushi.netlify.app/textbooks.json" : "http://localhost:3000/textbooks.json" )
   const data = await req.json()
 
-  const paths = data.map(textbook => {
+  const paths = data.textbooks.map(textbook => {
     return { params: { id: textbook, }, }
   })
 
