@@ -8,6 +8,7 @@ const StarRating = ({numOfStars}) => {
   const [stars, setStars] = useState(numOfStars);
 
   const processRating = () => {
+    stars = parseInt(stars);
     if (rating === false) {
       setRating(true)
       setStars(stars+=1)
