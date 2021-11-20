@@ -28,11 +28,11 @@ export default function SignIn() {
 
       <div className={styles.form_container}>
 
-        <div className={styles.input}>
+        <div className="sushi-input-container">
           <label>Email</label>
           <input className="sushi-input" type="text" />
         </div>
-        <div className={styles.input}>
+        <div className="sushi-input-container">
           <label>Password</label>
           <input className="sushi-input" autoComplete="cc-csc" type="password"/>
         </div>

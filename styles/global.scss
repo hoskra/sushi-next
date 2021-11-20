@@ -64,6 +64,20 @@ main {
   outline: none;
 }
 
+.sushi-input-container {
+  label {
+    width: 100%;
+    color: lighten($color: $secondary-color, $amount: 20%);
+  }
+  &:focus-within label {
+    color: $primary-color;
+  }
+  input, textarea {
+    margin: 0.5em 0;
+    width: 100%;
+  }
+}
+
 .textbook-list {
   border: 1px solid lighten($color: $secondary-color, $amount: 20%);
   border-radius: 0.5em;

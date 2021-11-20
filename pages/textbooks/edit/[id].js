@@ -57,7 +57,7 @@ export default function TextbookEdit() {
 
           <div className={styles.action}>
             <Link href="/vocabulary" passHref>
-            <button className="sushi-button">Vocabulary</button>
+              <button className="sushi-button">Vocabulary</button>
             </Link>
             <button className="sushi-button">Delete</button>
           </div>
@@ -65,10 +65,12 @@ export default function TextbookEdit() {
 
         <div className={styles.textbookView}>
           <h1 className={styles.title}>First Page</h1>
-          <textarea className={styles.pageContent}
+          <textarea className="sushi-input"
           defaultValue="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur sagittis hendrerit ante. Fusce nibh. Nam sed tellus id magna elementum tincidunt. Fusce suscipit libero eget elit. Donec quis nibh at felis congue commodo. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus."
           />
-          <button className="sushi-button">Save</button>
+          <Link href={"/textbooks/" + textbook.id} >
+            <button className="sushi-button">Save</button>
+          </Link>
         </div>
       </div>
     </>

@@ -57,5 +57,7 @@ export const dataHelmut = [
 
 export const userHelmut = {
   name: "Helmut Větvička",
+  password: "helmut@vetvicka.com",
+  email: "helmut@vetvicka.com",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
 }
