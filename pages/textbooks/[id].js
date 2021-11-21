@@ -8,6 +8,7 @@ import Favourite from '../../components/Favourite'
 import HeadComponent from '../../components/HeadComponent'
 
 import { data } from '../../constants/data'
+import TextbookMenu from "../../components/TextbookMenu";
 
 export default function TextbookView() {
   const router = useRouter()
@@ -28,7 +29,7 @@ export default function TextbookView() {
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
 
-      <div className={styles.textbookConteiner}>
+      <div className={styles.textbookContainer}>
 
         <aside>
           { loggedIn && textbook.author == "Helmut" &&
@@ -36,13 +37,8 @@ export default function TextbookView() {
             <button className="sushi-button">Edit</button>
           </Link>
           }
-          <ul className={styles.pageMenu}>
-            <li>First Page</li>
-            <li>Second Page</li>
-            <li>Third Page</li>
-            <li>Fourth Page</li>
-            <li>Fifth Page</li>
-          </ul>
+
+          <TextbookMenu />
         </aside>
 
         {console.log(router.query.id)}

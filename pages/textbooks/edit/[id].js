@@ -1,10 +1,12 @@
 import styles from '../../../styles/TextbookEdit.module.scss'
+import stylesX from '../../../styles/Textbook.module.scss'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import HeadComponent from '../../../components/HeadComponent'
+import TextbookMenu from '../../../components/TextbookMenu'
 import Toggle from '../../../components/Toggle'
 
 import { data } from '../../../constants/data'
@@ -46,14 +48,7 @@ export default function TextbookEdit() {
             <Toggle />
           </div>
 
-          <ul className={styles.pageMenu}>
-            <li>First Page</li>
-            <li>Second Page</li>
-            <li>Third Page</li>
-            <li>Fourth Page</li>
-            <li>Fifth Page</li>
-            <li>Create New Page <FontAwesomeIcon icon={faPlus}/></li>
-          </ul>
+          <TextbookMenu isEdit={true} />
 
           <div className={styles.action}>
             <Link href="/vocabulary" passHref>

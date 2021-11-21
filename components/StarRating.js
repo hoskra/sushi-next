@@ -5,7 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const StarRating = ({numOfStars}) => {
   const [rating, setRating] = useState(false);
-  const [stars, setStars] = useState(numOfStars);
+  let [stars, setStars] = useState(numOfStars);
 
   const processRating = () => {
     stars = parseInt(stars);

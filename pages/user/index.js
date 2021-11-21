@@ -4,6 +4,8 @@ import styles from '../../styles/User.module.scss'
 import HeadComponent from '../../components/HeadComponent'
 import TextbookCard from '../../components/TextbookCard'
 import { userHelmut, dataHelmut } from '../../constants/data'
+import Link from "next/link";
+import {useSelector} from "react-redux";
 
 export default function User() {
   const [list, setComponent] = useState(true);
