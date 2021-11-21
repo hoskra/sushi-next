@@ -53,10 +53,16 @@ export default function SignUp() {
 
         <div className={styles.alternative}>Or Sign Up using your account with:</div>
 
-        <div className={styles.socails}>
-          <button type="button" className="sushi-button">Google<FontAwesomeIcon icon={faGoogle} /></button>
-          <button type="button" className="sushi-button">Twitter<FontAwesomeIcon icon={faTwitter} /></button>
-          <button type="button" className="sushi-button">Google<FontAwesomeIcon icon={faFacebook} /></button>
+        <div className={styles.socials}>
+          <Link href='/' passHref>
+            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Google<FontAwesomeIcon icon={faGoogle} /></button>
+          </Link>
+          <Link href='/' passHref>
+            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Twitter<FontAwesomeIcon icon={faTwitter} /></button>
+          </Link>
+          <Link href='/' passHref>
+            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Facebook<FontAwesomeIcon icon={faFacebook} /></button>
+          </Link>
         </div>
       </div>
 
