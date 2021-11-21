@@ -120,10 +120,19 @@
   .pageName { display: grid; grid-column: 1/3; }
   .favourites { display: grid; grid-column: 3/3; }
   .pageName { font-size: 1.3em; font-weight: bold; }
-  .pageContent { grid-column: 1/4; text-align: justify; }
+  .pageContent {
+    grid-column: 1/4; text-align: justify;
+    .term {
+      background-color:lighten($color: $secondary-color, $amount: 35%);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
   .favourite svg {
     width: 0.6em;
   }
+
 }
 
 @media (max-width: 600px) {

@@ -60,3 +60,29 @@
     }
   }
 }
+
+.side_modal {
+  transition: all 500ms ease-in-out;
+  position: absolute;
+  background: white;
+  padding: 25px 25px 30px 25px;
+  top: 0;
+  width: 416px;
+  height: 100%;
+  right: 0;
+  bottom: auto;
+  margin-right: 0;
+  border-radius: 13px 0 0 13px;
+  p {
+    text-align: justify;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+  h2 {
+    padding: 0;
+    margin-top: 0;
+    color: $text-color;
+    font-weight: normal;
+  }
+}
