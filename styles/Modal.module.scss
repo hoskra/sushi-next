@@ -31,13 +31,17 @@
 
 .modalContent {
   display: block;
+  width: 280px;
 
-  .divider {
-    margin: 25px 0;
+  .private {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5em;
+    margin-bottom: 40px;
   }
 
   .inlineLabel {
-    margin-right: 15px;
+    margin-right: 180px;
   }
 
   .blockLabel {

@@ -29,25 +29,25 @@ export default function HomepageTools() {
       <Tabs/>
       { loggedIn &&
         <button className="sushi-button" onClick={(e) => enableModal(e)}>
-          Add new textbook 
+          Add new textbook
           <FontAwesomeIcon icon={faPlus} />
           <SushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Add new Textbook'}>
             <form className={modalStyles.modalContent}>
-              <span>
-                <span className={modalStyles.blockLabel}>Name</span>
-                <input/>
-              </span>
-              <div className={modalStyles.divider} />
-              <span>
-                <span className={modalStyles.inlineLabel}>Private</span>
+              <div className="sushi-input-container">
+                <label className={modalStyles.blockLabel}>Name</label>
+                <input className="sushi-input"/>
+              </div>
+              <div className="sushi-input-container">
+              <div className={modalStyles.private}>
+                <label className={modalStyles.inlineLabel}>Private</label>
                 <Toggle />
-              </span>
-              <div className={modalStyles.divider} />
+              </div>
+              </div>
               <div className={modalStyles.buttons}>
                 <Link href={'/textbooks/edit/1'} passHref>
-                  <button>Add</button>
+                  <button className="sushi-button">Add</button>
                 </Link>
-                <button onClick={(e) => disableModal(e)}>Close</button>
+                <button className="sushi-button" onClick={(e) => disableModal(e)}>Close</button>
               </div>
             </form>
           </SushiModal>
