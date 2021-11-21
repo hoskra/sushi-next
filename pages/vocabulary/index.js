@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 
 import styles from '../../styles/Vocabulary.module.scss'
+import colorStyles from '../../styles/variables.module.scss'
 import React, { useState } from "react";
 
 import HeadComponent from "../../components/HeadComponent";
@@ -20,6 +21,28 @@ export default function Vocabulary() {
       .map((x, i) => String.fromCharCode(65 + i));
   }
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderRadius: '1em',
+      borderColor: '#9f90ff',
+     
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      borderRadius: '1em'
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      borderRadius: '1em',
+      '&:hover': {
+        backgroundColor: "#f7f6ff"
+      },
+      backgroundColor: 'white',
+      color: 'black'
+    })
+  }
+
   return (
     <>
       <HeadComponent />
@@ -34,7 +57,7 @@ export default function Vocabulary() {
             <span>Only added by me</span>
             <Toggle />
           </div>
-          <Select placeholder="Pick a textbook" className={styles.pageMenu} options={dataHelmut.map(it => ({
+          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={dataHelmut.map(it => ({
             value: it.id,
             label: it.title
           }))}
