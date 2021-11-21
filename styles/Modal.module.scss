@@ -1,0 +1,58 @@
+@import './variables.module.scss';
+
+.modal {
+  position: absolute;
+  background: white;
+  padding: 25px 25px 30px 25px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+
+  h2 {
+    padding: 0;
+    margin-top: 0;
+    color: $text-color;
+    font-weight: normal;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(50, 50, 50, 0.2);
+}
+
+.modalContent {
+  display: block;
+
+  .divider {
+    margin: 25px 0;
+  }
+
+  .inlineLabel {
+    margin-right: 15px;
+  }
+
+  .blockLabel {
+    display: block;
+  }
+
+  > * {
+    display: block;
+  }
+
+  .buttons {
+    text-align: right;
+
+    > * {
+      margin: 0 3px;
+    }
+  }
+}
