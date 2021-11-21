@@ -1,3 +1,4 @@
+import React from "react";
 import styles from '../../../styles/TextbookEdit.module.scss'
 import stylesX from '../../../styles/Textbook.module.scss'
 import { useRouter } from 'next/router'
@@ -7,13 +8,26 @@ import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import HeadComponent from '../../../components/HeadComponent'
 import TextbookMenu from '../../../components/TextbookMenu'
+import Collaborators from '../../../components/Collaborators'
 import Toggle from '../../../components/Toggle'
+import SideSushiModal from '../../../components/SideSushiModal'
 
 import { data } from '../../../constants/data'
 
 export default function TextbookEdit() {
   const router = useRouter()
   let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  const enableModal = (e) => {
+    e.stopPropagation();
+    setIsOpen(true);
+  }
+
+  const disableModal = (e) => {
+    e.stopPropagation();
+    setIsOpen(false);
+  }
 
   if(textbook == undefined) {
     textbook = {
@@ -28,7 +42,9 @@ export default function TextbookEdit() {
   return (
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
-
+      <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)}>
+        <Collaborators onClose={(e) => (disableModal(e))}/>
+      </SideSushiModal>
       <div className={styles.textbookContainer}>
 
         <aside>
@@ -40,7 +56,7 @@ export default function TextbookEdit() {
 
           <div className={styles.group}>
             Collaborators
-            <FontAwesomeIcon icon={faUserPlus} size="2x" />
+            <FontAwesomeIcon icon={faUserPlus} size="2x " onClick={(e) => enableModal(e)}/>
           </div>
 
           <div className={styles.group}>

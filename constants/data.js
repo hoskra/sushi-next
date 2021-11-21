@@ -61,3 +61,25 @@ export const userHelmut = {
   email: "helmut@vetvicka.com",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
 }
+export const collaborators = [
+  {
+    id: 1,
+    name: "Helmut",
+    wasAdded: false
+  },
+  {
+    id: 2,
+    name: "Ing. Helmut",
+    wasAdded: false
+  },
+  {
+    id: 3,
+    name: "Helmut Jr.",
+    wasAdded: true
+  },
+  {
+    id: 4,
+    name: "Helmutka",
+    wasAdded: true
+  },
+]
