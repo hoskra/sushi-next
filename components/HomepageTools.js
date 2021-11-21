@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +7,6 @@ import Tabs from "./Tabs";
 import SushiModal from "./SushiModal";
 import modalStyles from '../styles/Modal.module.scss'
 import Toggle from "./Toggle";
-import styles from "../styles/Signin.module.scss";
 import Link from "next/link";
 
 export default function HomepageTools() {
@@ -45,7 +44,7 @@ export default function HomepageTools() {
               </span>
               <div className={modalStyles.divider} />
               <div className={modalStyles.buttons}>
-                <Link href='/textbooks/edit/1' passHref>
+                <Link href={'/textbooks/edit/1'} passHref>
                   <button>Add</button>
                 </Link>
                 <button onClick={(e) => disableModal(e)}>Close</button>
