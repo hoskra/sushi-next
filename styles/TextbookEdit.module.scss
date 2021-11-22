@@ -53,4 +53,23 @@
       font-size: small;
     }
   }
+
+  .newPage {
+    border: none;
+    margin: 0 auto;
+    padding: 6px;
+    border: 2px solid;
+    border-color: lighten($color: $secondary-color, $amount: 20%);
+    border-radius: 1em;
+    font-size: 1em;
+    &:focus {
+      border-color: $primary-color;
+    }
+    outline: none;
+    margin-bottom: 0.5em;
+  }
+}
+
+.action {
+  margin-top: 2em;
 }

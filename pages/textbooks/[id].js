@@ -17,7 +17,6 @@ export default function TextbookView() {
   const loggedIn = useSelector((state) => state.user.value)
   let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
 
-
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const enableModal = (e) => {
@@ -30,6 +29,10 @@ export default function TextbookView() {
     setIsOpen(false);
   }
 
+  const [pageName, setpageName] = React.useState("First Page");
+  const sendPageName = (name)  => {
+    setpageName(name)
+  }
 
   if(textbook == undefined) {
     textbook = {
@@ -46,7 +49,6 @@ export default function TextbookView() {
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
 
       <div className={styles.textbookContainer}>
-
         <aside>
           { loggedIn && textbook.author == "Helmut" &&
           <Link href={"/textbooks/edit/" + textbook.id} passHref>
@@ -54,7 +56,7 @@ export default function TextbookView() {
           </Link>
           }
 
-          <TextbookMenu />
+          <TextbookMenu sendPageName={sendPageName}/>
         </aside>
 
         {console.log(router.query.id)}
@@ -66,7 +68,7 @@ export default function TextbookView() {
           </div>
           <span className={styles.author}>by {textbook.author}</span>
           <StarRating numOfStars={textbook.stars}/>
-          <span className={styles.pageName}>First Page</span>
+          <h3 className={styles.pageName}>{pageName}</h3>
           <p className={styles.pageContent}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             Nullam rhoncus aliquam metus. Aliquam erat volutpat.&nbsp;<span onClick={(e) => enableModal(e)} className={styles.term}>Pellentesque ipsum.</span>
@@ -80,7 +82,7 @@ export default function TextbookView() {
              Fusce nibh. Nam sed tellus id magna elementum tincidunt. Fusce
              suscipit libero eget elit. Donec quis nibh at felis congue commodo.
              Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.
-             Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat. 
+             Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat.
              {/* <span onClick={(e) => enableModal(e)} className={styles.term}>Aliquam erat volutpat.</span> */}
             {/* <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Aliquam erat volutpat.'}>
               sssssssssssssssssssssssssssssssss
