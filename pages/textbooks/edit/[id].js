@@ -56,7 +56,7 @@ export default function TextbookEdit() {
 
           <div className={styles.group}>
             Collaborators
-            <FontAwesomeIcon icon={faUserPlus} size="2x " onClick={(e) => enableModal(e)}/>
+            <FontAwesomeIcon icon={faUserPlus} size="2x" onClick={(e) => enableModal(e)}/>
           </div>
 
           <div className={styles.group}>
