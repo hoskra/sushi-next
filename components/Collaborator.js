@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser, faPlus, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faUser, faPlus} from "@fortawesome/free-solid-svg-icons";
 import styles from '../styles/Collaborators.module.scss'
 
 import { useSelector } from 'react-redux'

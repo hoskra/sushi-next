@@ -21,7 +21,7 @@ export default function Collaborators(onClose) {
             return collaborator;
           }
         }).map((collaborator, i) => (
-          <Collaborator data={collaborator} key={i} onClose={event => onClose}></Collaborator>
+          <Collaborator data={collaborator} key={i} onClose={(e) => onClose(e)}></Collaborator>
         ))
       }
       </div>
