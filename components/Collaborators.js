@@ -6,7 +6,7 @@ import styles from '../styles/Collaborators.module.scss'
 
 import { collaborators } from '../constants/data'
 
-export default function Collaborators(onClose) {
+export default function Collaborators({onClose}) {
   const [query, setQuery] = useState('');
 
   return (
@@ -26,7 +26,7 @@ export default function Collaborators(onClose) {
                 }
               }
             }).map(collaborator => (
-              <Collaborator data={collaborator} onClose={onClose}></Collaborator>
+              <Collaborator data={collaborator} onClose={(e) => onClose(e)} />
             ))
           }
         </div>

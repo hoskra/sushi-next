@@ -7,10 +7,10 @@ export default function Collaborator(props) {
 
     return (
         <div className={styles.collaborator}>
-            <span className={styles.collaboratorImage}></span>
+            <span className={styles.collaboratorImage} />
             <span>{props.data.name}</span>
             <span>
-                <button className="sushi-button" onClick={event => props.onClose}>
+                <button className="sushi-button" onClick={(e) => props.onClose(e)}>
                   {props.data.wasAdded ? 'Remove' : 'Add'}
                   {!props.data.wasAdded ? <FontAwesomeIcon icon={faPlus} />: ""}
                 </button>

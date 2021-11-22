@@ -29,7 +29,7 @@ export default function TextbookEdit() {
     setIsOpen(false);
   }
 
-  if(textbook == undefined) {
+  if(textbook === undefined) {
     textbook = {
       id: 4,
       title: "Zahradničení",
@@ -43,7 +43,7 @@ export default function TextbookEdit() {
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
       <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)}>
-        <Collaborators onClose={(e) => (disableModal(e))}/>
+        <Collaborators onClose={(e) => disableModal(e)}/>
       </SideSushiModal>
       <div className={styles.textbookContainer}>
 
