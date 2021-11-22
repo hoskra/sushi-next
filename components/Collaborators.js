@@ -4,43 +4,47 @@ import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import Collaborator from "./Collaborator";
 import styles from '../styles/Collaborators.module.scss'
 
+import { useSelector } from 'react-redux'
 import { collaborators } from '../constants/data'
 
 export default function Collaborators(onClose) {
+  const collabs = useSelector((state) => state.collaborator.value)
   const [query, setQuery] = useState('');
 
   return (
-    <div>
-        <div className={styles.collaboratorsList}>
-          <div className={styles.collaboratorsSearch}>
-            <FontAwesomeIcon icon={faSearch} />
-            <input className="sushi-input" placeholder="search" onChange={event => setQuery(event.target.value)} />
-          </div>
-          {
-            collaborators.filter(collaborator => {
-              if (!collaborator.wasAdded) {
-                if (query === '') {
-                  return collaborator;
-                } else if (collaborator.name.toLowerCase().includes(query.toLowerCase())) {
-                  return collaborator;
-                }
-              }
-            }).map(collaborator => (
-              <Collaborator data={collaborator} onClose={onClose}></Collaborator>
-            ))
+    <>
+      <h2>Collaborators</h2>
+      <div className={styles.collaboratorsList}>
+      {
+        collaborators.filter(collaborator => {
+          if (collabs && collabs.includes(collaborator.id)) {
+            return collaborator;
           }
-        </div>
-      <div>
+        }).map((collaborator, i) => (
+          <Collaborator data={collaborator} key={i} onClose={event => onClose}></Collaborator>
+        ))
+      }
+      </div>
+      <h2>Add Collaborator</h2>
+      <div className={styles.collaboratorsSearch}>
+        <FontAwesomeIcon icon={faSearch} />
+        <input className="sushi-input" placeholder="search" defaultValue="helmut" onChange={event => setQuery(event.target.value)} />
+      </div>
+      <div className={styles.collaboratorsList}>
         {
           collaborators.filter(collaborator => {
-            if (collaborator.wasAdded) {
-              return collaborator;
+            if (collabs && !collabs.includes(collaborator.id)) {
+              if (query === '') {
+                return collaborator;
+              } else if (collaborator.name.toLowerCase().includes(query.toLowerCase())) {
+                return collaborator;
+              }
             }
-          }).map(collaborator => (
-            <Collaborator data={collaborator} onClose={event => onClose}></Collaborator>
+          }).map((collaborator, i) => (
+            <Collaborator data={collaborator} key={i} onClose={onClose}></Collaborator>
           ))
         }
       </div>
-    </div>
+    </>
   );
 };
