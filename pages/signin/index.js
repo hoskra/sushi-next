@@ -30,11 +30,11 @@ export default function SignIn() {
 
         <div className="sushi-input-container">
           <label>Email</label>
-          <input className="sushi-input" type="text" />
+          <input className="sushi-input" defaultValue="helmut@vetvicka.com" type="text" />
         </div>
         <div className="sushi-input-container">
           <label>Password</label>
-          <input className="sushi-input" autoComplete="cc-csc" type="password"/>
+          <input className="sushi-input" defaultValue="helmutvetvicka" autoComplete="cc-csc" type="password"/>
         </div>
 
         <div className={styles.submit}>
