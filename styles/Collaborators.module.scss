@@ -4,31 +4,42 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   padding: 0.9em;
+  display: grid;
+  grid-row-gap: 1em;
+  margin: 1em 0;
 }
 
 .collaboratorImage {
   border: 1px solid #eaeaea;
   width: 50px;
   height: 50px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    width: 1.5em;
+  }
 }
 
 .collaborator {
-  padding: 30px;
   display: flex;
-  justify-content: space-evenly;
+  width: 100%;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  button {
+    display: flex;
+  }
 }
 
 .collaboratorsSearch {
   width: 100%;
   text-align: center;
-  margin: 0em 0;
+  margin: 0.8em 0;
   svg {
     vertical-align: middle;
   }
-  .sushi-input {
+  input {
     width: 20em;
   }
 }
