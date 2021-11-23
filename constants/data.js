@@ -12,6 +12,7 @@ export const data = [
     author: "Helmut",
     modification: "24/10/2021",
     stars: "7",
+    userId: 0,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export const data = [
     author: "Douglas Adams",
     modification: "5/3/1979",
     stars: "42",
+    userId: 1,
   },
   {
     id: 3,
@@ -26,6 +28,7 @@ export const data = [
     author: "Giovanni",
     modification: "12/12/135",
     stars: "2",
+    userId: 2,
   },
   {
     id: 4,
@@ -33,27 +36,11 @@ export const data = [
     author: "Helmut",
     modification: "14/10/2021",
     stars: "2",
+    userId: 0,
   },
 ]
 
 export const paths = ["1", "2", "3", "4"]
-
-export const dataHelmut = [
-  {
-    id: 1,
-    title: "Atlas hub",
-    author: "Helmut",
-    modification: "24/10/2021",
-    stars: "7",
-  },
-  {
-    id: 4,
-    title: "Zahradničení",
-    author: "Helmut",
-    modification: "14/10/2021",
-    stars: "2",
-  },
-]
 
 export const userHelmut = {
   name: "Helmut Větvička",
@@ -61,6 +48,58 @@ export const userHelmut = {
   email: "helmut@vetvicka.com",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
 }
+
+export const users = [
+  {
+    id: 0,
+    name: "Helmut Větvička",
+    textbooks: [
+      {
+        id: 1,
+        title: "Atlas hub",
+        author: "Helmut",
+        modification: "24/10/2021",
+        stars: "7",
+      },
+      {
+        id: 4,
+        title: "Zahradničení",
+        author: "Helmut",
+        modification: "14/10/2021",
+        stars: "2",
+      },
+    ]
+  },
+  {
+    id: 1,
+    name: "Douglas Adams",
+    textbooks: [
+      {
+        id: 2,
+        title: "Hitchhiker's Guide to the Galaxy",
+        author: "Douglas Adams",
+        modification: "5/3/1979",
+        stars: "42",
+        userId: 1,
+      },
+    ]
+  },
+  {
+    id: 2,
+    name: "Giovanni",
+    textbooks: [
+      {
+        id: 3,
+        title: "Lorem ipsum dolor sit amet",
+        author: "Giovanni",
+        modification: "12/12/135",
+        stars: "2",
+        userId: 2,
+      },
+    ]
+  },
+]
+
 export const collaborators = [
   {
     id: 1,

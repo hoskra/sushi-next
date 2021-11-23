@@ -20,7 +20,8 @@ export default function TextbookCard(props) {
       <span className={styles.stars}>{props.data.stars}<FontAwesomeIcon icon={farFaStar}/></span>
       <span className={styles.author}>
         <Link href={{
-                pathname: '/user'
+                pathname: '/user/[id]',
+                query: {id: props.data.userId},
               }}
         >
           <a>by {props.data.author}</a>

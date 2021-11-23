@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className={styles.menu_items}>
           {
             loggedIn &&
-            <Link href="/user">
+            <Link href="/user/0">
               <a>
                 <span>User</span>
                 <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
