@@ -69,7 +69,7 @@ export default function TextbookView() {
           <StarRating numOfStars={textbook.stars}/>
           <h3 className={styles.pageName}>{pageName}</h3>
           <div className={styles.pageContent}>
-          <SelectedMenu  items={['search', 'add']}> 
+          <SelectedMenu  items={['search', 'add']}>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             Nullam rhoncus aliquam metus. Aliquam erat volutpat.&nbsp;</SelectedMenu><span onClick={(e) => enableModal(e)} className={styles.term}>Pellentesque ipsum.</span>
             <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Pellentesque ipsum.'}>
@@ -85,18 +85,6 @@ export default function TextbookView() {
              Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat.
              Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.
              </SelectedMenu>
-              {/* <span onClick={(e) => enableModal(e)} className={styles.term}>Aliquam erat volutpat.</span> */}
-            {/* <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Aliquam erat volutpat.'}>
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-              sssssssssssssssssssssssssssssssss
-            </SideSushiModal> */}
              </div>
         </div>
       </div>
