@@ -13,7 +13,7 @@ export default function Tabs() {
   return (
     <ul className="tabs">
       <li onClick={() => dispatch(trending())} className={tabState == 0 ? "active" : undefined}>Trending</li>
-      {loggedIn ? 
+      {loggedIn ?
         <>
         <li onClick={() => dispatch(sharedWithMe())} className={tabState == 1 ? "active" : undefined}>Shared with me</li>
         <li onClick={() => dispatch(myTextbooks())} className={tabState == 2 ? "active" : undefined}>My Textbooks</li>

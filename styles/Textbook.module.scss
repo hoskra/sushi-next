@@ -111,6 +111,10 @@
   }
 }
 
+.stars_logout .off {
+  cursor: default;
+}
+
 .textbookView {
   display: grid;
   grid-template-columns: auto auto auto;

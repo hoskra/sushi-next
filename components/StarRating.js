@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styles from '../styles/Textbook.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux'
 
 const StarRating = ({numOfStars}) => {
+  const loggedIn = useSelector((state) => state.user.value);
   const [rating, setRating] = useState(false);
   let [stars, setStars] = useState(numOfStars);
 
@@ -19,12 +21,12 @@ const StarRating = ({numOfStars}) => {
   }
 
   return (
-    <span className={styles.stars}>
+    <span className={loggedIn ? styles.stars : styles.stars_logout}>
           {stars}
           <button
             type="button"
             className={rating ? styles.on : styles.off}
-            onClick={() => processRating()}
+            onClick={() => loggedIn && processRating()}
           >
            <FontAwesomeIcon icon={faStar} />
           </button>

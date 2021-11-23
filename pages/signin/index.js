@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 import { logIn } from '../../redux/userSlice'
+import { myTextbooks } from '../../redux/tabSlice'
 import HeadComponent from '../../components/HeadComponent'
 
 export default function SignIn() {
@@ -38,11 +39,12 @@ export default function SignIn() {
         </div>
 
         <div className={styles.submit}>
-        {/* <button type="button" className="sushi-button">Sign Up</button> */}
         <Link href='/' passHref>
           <button
             className="sushi-button"
-            onClick={() => dispatch(logIn())}>
+            onClick={() => {
+              dispatch(logIn());
+              dispatch(myTextbooks()); }}>
               Sign in
             </button>
         </Link>
@@ -54,13 +56,19 @@ export default function SignIn() {
 
         <div className={styles.socials}>
           <Link href='/' passHref>
-            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Google<FontAwesomeIcon icon={faGoogle} /></button>
+            <button type="button" className="sushi-button" onClick={() => {dispatch(logIn());dispatch(myTextbooks()); }}>
+              Google<FontAwesomeIcon icon={faGoogle} />
+            </button>
           </Link>
           <Link href='/' passHref>
-            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Twitter<FontAwesomeIcon icon={faTwitter} /></button>
+            <button type="button" className="sushi-button" onClick={() => {dispatch(logIn());dispatch(myTextbooks()); }}>
+              Twitter<FontAwesomeIcon icon={faTwitter} />
+            </button>
           </Link>
           <Link href='/' passHref>
-            <button type="button" className="sushi-button" onClick={() => dispatch(logIn())}>Facebook<FontAwesomeIcon icon={faFacebook} /></button>
+            <button type="button" className="sushi-button" onClick={() => {dispatch(logIn());dispatch(myTextbooks()); }}>
+              Facebook<FontAwesomeIcon icon={faFacebook} />
+            </button>
           </Link>
         </div>
       </div>

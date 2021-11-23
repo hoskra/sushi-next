@@ -58,13 +58,10 @@ export default function TextbookView() {
 
           <TextbookMenu sendPageName={sendPageName}/>
         </aside>
-
-        {console.log(router.query.id)}
-
         <div className={styles.textbookView}>
           <h1 className={styles.title}>{textbook.title}</h1>
           <div className={styles.favourite}>
-            <Favourite />
+            {loggedIn && <Favourite />}
           </div>
           <span className={styles.author}>by {textbook.author}</span>
           <StarRating numOfStars={textbook.stars}/>
