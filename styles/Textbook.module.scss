@@ -143,6 +143,31 @@
 
 }
 
+.termContainer {
+  margin: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  textarea {
+    resize: none;
+    width: 100%;
+    height: 300px;
+    margin: 1.5em 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  .termActions {
+    display:flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    button {
+      margin-left: 0.5em;
+    }
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

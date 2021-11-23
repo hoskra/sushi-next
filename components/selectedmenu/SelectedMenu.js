@@ -65,7 +65,6 @@ class SelectedMenu extends Component {
             key={e}
             tabIndex={i}
             href={href}
-            target="_blank"
           >
             { model[e].icon }
           </a>
@@ -77,7 +76,6 @@ class SelectedMenu extends Component {
             key={e}
             tabIndex={i}
             href={href}
-            target="_blank"
           >
             { model[e].icon }
           </a>
