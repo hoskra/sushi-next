@@ -131,9 +131,14 @@ export default function TextbookEdit() {
           </div>
           </>
           :
-          <Link href={"/textbooks/" + textbook.id} >
-            <button className="sushi-button">Save</button>
-          </Link>
+            <div>
+              <Link href={"/textbooks/" + textbook.id} >
+                <button className="sushi-button">Save</button>
+              </Link>
+              <Link href={"/textbooks/" + textbook.id} >
+                <button className="sushi-button" style={{marginRight:'0.5em'}}>Delete page</button>
+              </Link>
+            </div>
           }
          
         </div>

@@ -8,6 +8,7 @@ import Link from "next/link";
 import {useSelector} from "react-redux";
 
 export default function User() {
+  const loggedIn = useSelector((state) => state.user.value)
   const [list, setComponent] = useState(true);
 
   return (
@@ -17,10 +18,14 @@ export default function User() {
       <div className={styles.container}>
         <div className={styles.user_info}>
           <div className={styles.photo}></div>
-          <button className="sushi-button"
+          {
+            loggedIn ?
+            <button className="sushi-button"
             onClick={() => {list && setComponent(false)}}>
             {list ? <span>Settings</span> : <span>Upload photo</span> }
-          </button>
+            </button>
+            : <></>
+          }
           <h2 className={styles.name}>{userHelmut.name}</h2>
           <div className={styles.description}>{userHelmut.description}</div>
         </div>
