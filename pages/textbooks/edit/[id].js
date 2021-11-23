@@ -1,6 +1,7 @@
 import React from "react";
 import styles from '../../../styles/TextbookEdit.module.scss'
 import stylesX from '../../../styles/Textbook.module.scss'
+import modalStyles from '../../../styles/Modal.module.scss'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,6 +12,7 @@ import TextbookMenu from '../../../components/TextbookMenu'
 import Collaborators from '../../../components/Collaborators'
 import Toggle from '../../../components/Toggle'
 import SideSushiModal from '../../../components/SideSushiModal'
+import SushiModal from '../../../components/SushiModal'
 
 import { data } from '../../../constants/data'
 
@@ -18,6 +20,7 @@ export default function TextbookEdit() {
   const router = useRouter()
   let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [deleteModalIsOpen, setDeleteModalOpen] = React.useState(false);
 
   const enableModal = (e) => {
     e.stopPropagation();
@@ -27,6 +30,16 @@ export default function TextbookEdit() {
   const disableModal = (e) => {
     e.stopPropagation();
     setIsOpen(false);
+  }
+
+  const enableDeleteModal = (e) => {
+    e.stopPropagation();
+    setDeleteModalOpen(true);
+  }
+
+  const disableDeleteModal = (e) => {
+    e.stopPropagation();
+    setDeleteModalOpen(false);
   }
 
   const [pageName, setpageName] = React.useState("First Page");
@@ -75,7 +88,21 @@ export default function TextbookEdit() {
             <Link href="/vocabulary" passHref>
               <button className="sushi-button">Vocabulary</button>
             </Link>
-            <button className="sushi-button">Delete</button>
+            <button className="sushi-button" onClick={(e) => enableDeleteModal(e)}>Delete</button>
+
+            <SushiModal isOpen={deleteModalIsOpen} closeModal={(e) => disableDeleteModal(e)} title={`Delete textbook?`}>
+            <form className={modalStyles.modalContent}>
+            <div className="sushi-input-container">
+                <p>Given textbook will be permanently deleted.</p>
+              </div>
+              <div className={modalStyles.buttons}>
+                <Link href={'/'} passHref>
+                  <button className="sushi-button">Delete</button>
+                </Link>
+                <button className="sushi-button" onClick={(e) => disableDeleteModal(e)}>Cancel</button>
+              </div>
+            </form>
+          </SushiModal>
           </div>
         </aside>
 
