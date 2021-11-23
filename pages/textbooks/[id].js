@@ -11,6 +11,8 @@ import HeadComponent from '../../components/HeadComponent'
 import { data } from '../../constants/data'
 import TextbookMenu from "../../components/TextbookMenu";
 import SideSushiModal from '../../components/SideSushiModal'
+import SelectedMenu from '../../components/selectedmenu/index';
+
 
 export default function TextbookView() {
   const router = useRouter()
@@ -66,13 +68,15 @@ export default function TextbookView() {
           <span className={styles.author}>by {textbook.author}</span>
           <StarRating numOfStars={textbook.stars}/>
           <h3 className={styles.pageName}>{pageName}</h3>
+       
           <p className={styles.pageContent}>
+          <SelectedMenu items={['search', 'add']}> 
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            Nullam rhoncus aliquam metus. Aliquam erat volutpat.&nbsp;<span onClick={(e) => enableModal(e)} className={styles.term}>Pellentesque ipsum.</span>
+            Nullam rhoncus aliquam metus. Aliquam erat volutpat.&nbsp;</SelectedMenu><span onClick={(e) => enableModal(e)} className={styles.term}>Pellentesque ipsum.</span>
             <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Pellentesque ipsum.'}>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis Curabitur sagittis hendrerit ante.</p>
-            </SideSushiModal>&nbsp;Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.
-            Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.
+            </SideSushiModal><SelectedMenu items={['search', 'add']}>Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.
+             Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.
              Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo,
              vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis
              Curabitur sagittis hendrerit ante.
@@ -80,6 +84,7 @@ export default function TextbookView() {
              suscipit libero eget elit. Donec quis nibh at felis congue commodo.
              Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.
              Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat.
+             </SelectedMenu>
              {/* <span onClick={(e) => enableModal(e)} className={styles.term}>Aliquam erat volutpat.</span> */}
             {/* <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Aliquam erat volutpat.'}>
               sssssssssssssssssssssssssssssssss
