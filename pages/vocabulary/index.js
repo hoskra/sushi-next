@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 import HeadComponent from "../../components/HeadComponent";
 import Toggle from "../../components/Toggle";
-import { dataHelmut } from '../../constants/data'
+import { users } from '../../constants/data'
 import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -57,7 +57,7 @@ export default function Vocabulary() {
             <span>Only added by me</span>
             <Toggle />
           </div>
-          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={dataHelmut.map(it => ({
+          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={users[0].map(it => ({
             value: it.id,
             label: it.title
           }))}
