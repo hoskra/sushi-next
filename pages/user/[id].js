@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useRouter, userRouter} from 'next/router';
+import {useRouter} from 'next/router';
 
 import styles from '../../styles/User.module.scss'
 import HeadComponent from '../../components/HeadComponent'
@@ -12,8 +12,32 @@ import { users } from '../../constants/data';
 export default function User() {
   const router = useRouter()
   const loggedIn = useSelector((state) => state.user.value)
-  const [list, setComponent] = useState(true);
   let user = users.filter(x => { if(x.id == router.query.id)  return x})[0]
+
+  const [list, setComponent] = useState(true);
+
+  if(user == undefined) {
+    user = {
+      id: 0,
+      name: "Helmut Větvička",
+      textbooks: [
+        {
+          id: 1,
+          title: "Atlas hub",
+          author: "Helmut",
+          modification: "24/10/2021",
+          stars: "7",
+        },
+        {
+          id: 4,
+          title: "Zahradničení",
+          author: "Helmut",
+          modification: "14/10/2021",
+          stars: "2",
+        },
+      ]
+    }
+  }
 
   return (
     <>
@@ -24,11 +48,11 @@ export default function User() {
           <div className={styles.photo}></div>
           {
             loggedIn && user.id == 0 ?
-            <button className="sushi-button"
-            onClick={() => {list && setComponent(false)}}>
-            {list ? <span>Settings</span> : <span>Upload photo</span> }
-            </button>
-            : <></>
+              <button className="sushi-button"
+                      onClick={() => {list && setComponent(false)}}>
+                {list ? <span>Settings</span> : <span>Upload photo</span> }
+              </button>
+              : <></>
           }
           <h2 className={styles.name}>{user.name}</h2>
           <div className={styles.description}>{userHelmut.description}</div>
@@ -38,7 +62,7 @@ export default function User() {
           <div className={styles.textbook_list}>
             {user.textbooks.map((textbook, index) => (
               <TextbookCard key={index} data={textbook} />
-              ))}
+            ))}
           </div>
           :
           <form>
@@ -60,7 +84,7 @@ export default function User() {
             </div>
             <div className={styles.save_button}>
               <button type="button" className="sushi-button"
-              onClick={() => {!list && setComponent(true)}}>
+                      onClick={() => {!list && setComponent(true)}}>
                 Save
               </button>
             </div>

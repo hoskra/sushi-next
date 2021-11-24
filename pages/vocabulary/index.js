@@ -6,7 +6,7 @@ import React, { useState } from "react";
 
 import HeadComponent from "../../components/HeadComponent";
 import Toggle from "../../components/Toggle";
-import { users } from '../../constants/data'
+import { users } from '../../constants/data';
 import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
