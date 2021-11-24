@@ -57,7 +57,7 @@ export default function Vocabulary() {
             <span>Only added by me</span>
             <Toggle />
           </div>
-          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={users[0].map(it => ({
+          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={users[0].textbooks.map(it => ({
             value: it.id,
             label: it.title
           }))}
