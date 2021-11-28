@@ -8,6 +8,13 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   overflow-x: hidden;
   color: $text-color;
+  min-height: 100vh;
+}
+
+#__next {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 a {
@@ -34,7 +41,7 @@ svg {
 
 main {
   padding: 0 2rem;
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -136,4 +143,16 @@ main {
   background-color: $primary-color;
   color: white;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    width: 600px;
+  }
 }
