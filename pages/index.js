@@ -29,7 +29,8 @@ export default function Home() {
           if(textbook.tab.includes(tabState) && textbook.deleted == false) {
             if (query === '') {
               return textbook;
-            } else if (textbook.title.toLowerCase().includes(query.toLowerCase())) {
+            } else if (textbook.title.toLowerCase().includes(query.toLowerCase())
+             || textbook.author.toLowerCase().includes(query.toLowerCase())) {
               return textbook;
             }
           }

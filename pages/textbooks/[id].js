@@ -27,6 +27,13 @@ export default function TextbookView() {
     setPageContent(textbook.pages.filter(x => { if(x.name == name) return x})[0]);
   }
 
+  const authors = [
+    "Helmut",
+    "Helmutka",
+    "Giovanni",
+    "Šéf"
+  ]
+
   return (
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook" />
@@ -34,7 +41,7 @@ export default function TextbookView() {
       <div className={styles.textbookContainer}>
         <aside>
           <TextbookMenu sendPageName={sendPageName} pages={textbook.pages} />
-          {loggedIn && textbook.author == "Helmut" &&
+          {loggedIn && authors.includes(textbook.author) &&
             <Link href={"/textbooks/edit/" + textbook.id} passHref>
               <button className="sushi-button">Edit</button>
             </Link>

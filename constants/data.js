@@ -70,7 +70,7 @@ export const textbooks = [
     modification: "5/3/1979",
     stars: "42",
     userId: 1,
-    tab: [0, 1, 3],
+    tab: [0, 3],
     private: false,
     deleted: false,
     pages: [
@@ -209,6 +209,54 @@ export const textbooks = [
     deleted: false,
     pages: dummyPages
   },
+  {
+    id: 9,
+    title: "Nesnesitelná lehkost bytí",
+    author: "Milan Kundera",
+    modification: "11/11/2021",
+    stars: "11",
+    userId: 3,
+    tab: [3],
+    private: false,
+    deleted: false,
+    pages: dummyPages
+  },
+  {
+    id: 10,
+    title: "Gödel, Escher, Bach",
+    author: "Douglas Hofstadter",
+    modification: "11/11/2021",
+    stars: "13",
+    userId: 4,
+    tab: [3],
+    private: false,
+    deleted: false,
+    pages: dummyPages
+  },
+  {
+    id: 11,
+    title: "Co budeme vařit",
+    author: "Helmutka",
+    modification: "10/10/2021",
+    stars: "4",
+    userId: 5,
+    tab: [1],
+    private: false,
+    deleted: false,
+    pages: dummyPages
+  },
+  {
+    id: 12,
+    title: "Bez práce nejsou koláče",
+    author: "Šéf",
+    modification: "10/10/2021",
+    stars: "0",
+    userId: 6,
+    tab: [1],
+    private: false,
+    deleted: false,
+    pages: dummyPages
+  },
 ]
 
 
@@ -264,6 +312,22 @@ export const users = [
   {
     id: 2,
     name: "Giovanni",
+  },
+  {
+    id: 3,
+    name: "Milan Kundera",
+  },
+  {
+    id: 4,
+    name: "Douglas Hofstadter",
+  },
+  {
+    id: 5,
+    name: "Helmutka",
+  },
+  {
+    id: 6,
+    name: "Šéf",
   },
 ]
 
