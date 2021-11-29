@@ -1,11 +1,4 @@
-export const filterData = {
-  0: [1, 2, 3, 4],
-  1: [2, 3],
-  2: [1, 4],
-  3: [2]
-}
-
-export const data = [
+export const textbooks = [
   {
     id: 1,
     title: "Atlas hub",
@@ -13,6 +6,9 @@ export const data = [
     modification: "24/10/2021",
     stars: "7",
     userId: 0,
+    tab: [0, 2],
+    private: false,
+    deleted: false
   },
   {
     id: 2,
@@ -21,6 +17,9 @@ export const data = [
     modification: "5/3/1979",
     stars: "42",
     userId: 1,
+    tab: [0, 1, 3],
+    private: false,
+    deleted: false
   },
   {
     id: 3,
@@ -29,6 +28,9 @@ export const data = [
     modification: "12/12/135",
     stars: "2",
     userId: 2,
+    tab: [0, 1],
+    private: false,
+    deleted: false
   },
   {
     id: 4,
@@ -37,10 +39,13 @@ export const data = [
     modification: "14/10/2021",
     stars: "2",
     userId: 0,
+    tab: [0, 2],
+    private: false,
+    deleted: false
   },
 ]
 
-export const paths = ["1", "2", "3", "4"]
+export const paths = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
 
 export const userHelmut = {
   name: "Helmut Větvička",
@@ -53,50 +58,14 @@ export const users = [
   {
     id: 0,
     name: "Helmut Větvička",
-    textbooks: [
-      {
-        id: 1,
-        title: "Atlas hub",
-        author: "Helmut",
-        modification: "24/10/2021",
-        stars: "7",
-      },
-      {
-        id: 4,
-        title: "Zahradničení",
-        author: "Helmut",
-        modification: "14/10/2021",
-        stars: "2",
-      },
-    ]
   },
   {
     id: 1,
     name: "Douglas Adams",
-    textbooks: [
-      {
-        id: 2,
-        title: "Hitchhiker's Guide to the Galaxy",
-        author: "Douglas Adams",
-        modification: "5/3/1979",
-        stars: "42",
-        userId: 1,
-      },
-    ]
   },
   {
     id: 2,
     name: "Giovanni",
-    textbooks: [
-      {
-        id: 3,
-        title: "Lorem ipsum dolor sit amet",
-        author: "Giovanni",
-        modification: "12/12/135",
-        stars: "2",
-        userId: 2,
-      },
-    ]
   },
 ]
 

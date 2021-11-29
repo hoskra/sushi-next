@@ -1,47 +1,38 @@
 import React, { useState } from "react";
 import {useRouter} from 'next/router';
+import {useSelector} from "react-redux";
 
 import styles from '../../styles/User.module.scss'
 import HeadComponent from '../../components/HeadComponent'
 import TextbookCard from '../../components/TextbookCard'
-import {userHelmut, data} from '../../constants/data'
-import Link from "next/link";
-import {useSelector} from "react-redux";
-import { users } from '../../constants/data';
+
+import { users, userHelmut } from '../../constants/data';
 
 export default function User() {
   const router = useRouter()
+  const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
-  let user = users.filter(x => { if(x.id == router.query.id)  return x})[0]
+
+  const id = router.query.id;
+  console.log(id)
+
+  let user = userHelmut;
+
+  const setUser = () => {
+    if(isReady) {
+      user = users.filter(x => { if(x.id == id)  return x})[0]
+    }    
+  }
+  const txs = useSelector((state) => state.textbook.value)
+  let textbooks = txs.filter(x => { if(x.userId == id)  return x})
+  textbooks = textbooks.filter(x => { if(x.deleted == false)  return x})
 
   const [list, setComponent] = useState(true);
 
-  if(user == undefined) {
-    user = {
-      id: 0,
-      name: "Helmut Větvička",
-      textbooks: [
-        {
-          id: 1,
-          title: "Atlas hub",
-          author: "Helmut",
-          modification: "24/10/2021",
-          stars: "7",
-        },
-        {
-          id: 4,
-          title: "Zahradničení",
-          author: "Helmut",
-          modification: "14/10/2021",
-          stars: "2",
-        },
-      ]
-    }
-  }
-
   return (
     <>
-      <HeadComponent title={"SUSHI | " + userHelmut.name} description="SuperUltraSonicHyperInteractive TextBook"/>
+    {setUser()}
+      <HeadComponent title={"SUSHI | " + user.name} description="SuperUltraSonicHyperInteractive TextBook"/>
 
       <div className={styles.container}>
         <div className={styles.user_info}>
@@ -60,9 +51,10 @@ export default function User() {
 
         { list ?
           <div className={styles.textbook_list}>
-            {user.textbooks.map((textbook, index) => (
+            {textbooks.map((textbook, index) => (
               <TextbookCard key={index} data={textbook} />
             ))}
+            { textbooks.length == 0 && <div className={styles.no_textbooks}>User has no textbooks yet.</div> }
           </div>
           :
           <form>

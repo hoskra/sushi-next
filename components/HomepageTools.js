@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
 
 import Tabs from "./Tabs";
 import SushiModal from "./SushiModal";
@@ -9,9 +11,14 @@ import modalStyles from '../styles/Modal.module.scss'
 import Toggle from "./Toggle";
 import Link from "next/link";
 
-export default function HomepageTools() {
-  const loggedIn = useSelector((state) => state.user.value)
+import { addTextbook } from "../redux/textbookSlice";
 
+export default function HomepageTools() {
+  const router = useRouter();
+  const loggedIn = useSelector((state) => state.user.value)
+  const textbooks = useSelector((state) => state.textbook.value)
+  const dispatch = useDispatch();
+  const [isPrivate, setIsPrivate] = useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const enableModal = (e) => {
@@ -24,34 +31,60 @@ export default function HomepageTools() {
     setIsOpen(false);
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let name = e.target[0].value;
+
+    let getHighestId = textbooks.reduce((acc, curr) => {
+      return Math.max(acc, curr.id);
+    }, 0);
+    getHighestId++;
+    let getCurrentDate = new Date();
+    let date = getCurrentDate.toLocaleDateString('en-GB');
+    dispatch(addTextbook({
+      id: getHighestId,
+      title: name,
+      author: "Helmut",
+      modification: date,
+      stars: "0",
+      userId: 0,
+      tab: [0, 2],
+      private: isPrivate,
+      deleted: false
+     }));
+     router.push(`/textbooks/edit/${getHighestId}`);
+  }
+
+  const setPrivate = (e) => {
+    setIsPrivate(e);
+  }
+
   return (
     <div className="tools">
       <Tabs/>
       { loggedIn &&
-        <button className="sushi-button" onClick={(e) => enableModal(e)}>
+         <button className="sushi-button" onClick={(e) => enableModal(e)}>
           Add new textbook
           <FontAwesomeIcon icon={faPlus} />
           <SushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Add new Textbook'}>
-            <form className={modalStyles.modalContent}>
+            <form className={modalStyles.modalContent} onSubmit={handleSubmit}>
               <div className="sushi-input-container">
                 <label className={modalStyles.blockLabel}>Name</label>
-                <input className="sushi-input"/>
+                <input name="name" className="sushi-input"/>
               </div>
               <div className="sushi-input-container">
-              <div className={modalStyles.private}>
+              <div name="private" className={modalStyles.private}>
                 <label className={modalStyles.inlineLabel}>Private</label>
-                <Toggle />
+                <Toggle setPrivate={setPrivate} />
               </div>
               </div>
               <div className={modalStyles.buttons}>
-                <Link href={'/textbooks/edit/1'} passHref>
-                  <button className="sushi-button">Add</button>
-                </Link>
+              <button type="submit" className="sushi-button">Add</button>
                 <button className="sushi-button" onClick={(e) => disableModal(e)}>Close</button>
               </div>
             </form>
           </SushiModal>
-        </button>
+         </button>
       }
     </div>
   );

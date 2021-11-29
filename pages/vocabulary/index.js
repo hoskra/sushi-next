@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 
 import styles from '../../styles/Vocabulary.module.scss'
 import colorStyles from '../../styles/variables.module.scss'
@@ -6,14 +7,17 @@ import React, { useState } from "react";
 
 import HeadComponent from "../../components/HeadComponent";
 import Toggle from "../../components/Toggle";
-import { users } from '../../constants/data';
 import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+
+
 export default function Vocabulary() {
   const router = useRouter()
   const [letter, setLetter] = useState('A');
+  let txs = useSelector((state) => state.textbook.value)
+  txs = txs.filter(textbook=>textbook.userId==0);
 
   let createArrayAtoZ = _ => {
     return Array
@@ -57,11 +61,13 @@ export default function Vocabulary() {
             <span>Only added by me</span>
             <Toggle />
           </div>
-          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} options={users[0].textbooks.map(it => ({
-            value: it.id,
-            label: it.title
-          }))}
-          />
+          {console.log( )}
+          <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} 
+            options={txs.map(it => ({
+              value: it.id,
+              label: it.title
+            }))}
+            />
           <div>
             <button className="sushi-button" onClick={() => router.back()}>Back</button>
           </div>

@@ -56,11 +56,10 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
 
-  aside {
-    display: grid;
-    row-gap: 1.5rem;
-    grid-template-rows: 1.8em auto;
-  }
+  aside button {
+    width: 100%;
+    margin-top: 1rem;
+  } 
 }
 
 .pageMenu {

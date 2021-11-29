@@ -13,7 +13,6 @@ export default function Collaborator(props) {
     const collabs = useSelector((state) => state.collaborator.value)
     const dispatch = useDispatch()
 
-
     return (
         <div className={styles.collaborator}>
             <div className={styles.collaboratorImage}>  <FontAwesomeIcon icon={faUser} /></div>
@@ -33,11 +32,3 @@ export default function Collaborator(props) {
         </div>
     );
 };
-
-const mapDispatchToProps = dispatch => ({
-  removeCollaborator(id) {
-    return () => {
-      dispatch(removeCollaborator(id));
-    };
-  },
-});

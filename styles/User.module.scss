@@ -25,15 +25,21 @@
   height: 10em;
   background-color: #cccccc;
   border-radius: 0.5em;
+  margin-bottom: 2em;
 }
 
 .name {
   margin-top: 0;
 }
 
+
 .save_button {
   float: right;
   button {
     width: 100px;
   }
+}
+
+.no_textbooks {
+  text-align: center;
 }

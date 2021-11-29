@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux';
 
-import { data, filterData } from '../constants/data'
 import TextbookCard from '../components/TextbookCard'
 import HomepageTools from '../components/HomepageTools'
 import HeadComponent from '../components/HeadComponent'
@@ -11,6 +10,7 @@ import HeadComponent from '../components/HeadComponent'
 export default function Home() {
   const [query, setQuery] = useState('');
   const tabState = useSelector((state) => state.tab.value)
+  const txs = useSelector((state) => state.textbook.value)
 
   return (
     <>
@@ -23,11 +23,10 @@ export default function Home() {
       </div>
 
     <HomepageTools/>
-
     <div className="textbook-list">
       {
-        data.filter(textbook => {
-          if(filterData[tabState].includes(textbook.id)) {
+        txs.filter(textbook => {
+          if(textbook.tab.includes(tabState) && textbook.deleted == false) {
             if (query === '') {
               return textbook;
             } else if (textbook.title.toLowerCase().includes(query.toLowerCase())) {

@@ -1,8 +1,7 @@
 import React from "react";
 import styles from '../../../styles/TextbookEdit.module.scss'
-import stylesX from '../../../styles/Textbook.module.scss'
-import modalStyles from '../../../styles/Modal.module.scss'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -14,14 +13,27 @@ import Toggle from '../../../components/Toggle'
 import SideSushiModal from '../../../components/SideSushiModal'
 import SushiModal from '../../../components/SushiModal'
 
-import { data } from '../../../constants/data'
+import DeleteTextbook from "../../../components/DeleteTextbook";
 
 export default function TextbookEdit() {
-  const router = useRouter()
-  let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
+  const router = useRouter();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [deleteModalIsOpen, setDeleteModalOpen] = React.useState(false);
 
+  const txs = useSelector((state) => state.textbook.value)
+  let textbook = txs.filter(x => { if(x.id == router.query.id)  return x})[0];
+
+  if (textbook == undefined) {
+    textbook = {
+      id: 4,
+      title: "Zahradničení",
+      author: "Helmut",
+      modification: "14/10/2021",
+      stars: "2",
+      private: false,
+    }
+  }
+    
   const enableModal = (e) => {
     e.stopPropagation();
     setIsOpen(true);
@@ -47,16 +59,6 @@ export default function TextbookEdit() {
     setpageName(name)
   }
 
-  if(textbook === undefined) {
-    textbook = {
-      id: 4,
-      title: "Zahradničení",
-      author: "Helmut",
-      modification: "14/10/2021",
-      stars: "2",
-    }
-  }
-
   return (
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
@@ -79,7 +81,7 @@ export default function TextbookEdit() {
 
           <div className={styles.group}>
             <span>Private</span>
-            <Toggle />
+            <Toggle isChecked={textbook.private}/>
           </div>
 
           <TextbookMenu sendPageName={sendPageName} isEdit={true}/>
@@ -88,21 +90,13 @@ export default function TextbookEdit() {
             <Link href="/vocabulary" passHref>
               <button className="sushi-button">Vocabulary</button>
             </Link>
-            <button className="sushi-button" onClick={(e) => enableDeleteModal(e)}>Delete</button>
-
-            <SushiModal isOpen={deleteModalIsOpen} closeModal={(e) => disableDeleteModal(e)} title={`Delete textbook?`}>
-            <form className={modalStyles.modalContent}>
-            <div className="sushi-input-container">
-                <p>Given textbook will be permanently deleted.</p>
-              </div>
-              <div className={modalStyles.buttons}>
-                <Link href={'/'} passHref>
-                  <button className="sushi-button">Delete</button>
-                </Link>
-                <button className="sushi-button" onClick={(e) => disableDeleteModal(e)}>Cancel</button>
-              </div>
-            </form>
-          </SushiModal>
+            <button className="sushi-button" onClick={(e) => {
+              enableDeleteModal(e);
+            }}>
+                Delete</button>
+              <SushiModal isOpen={deleteModalIsOpen} closeModal={(e) => disableDeleteModal(e)} title={`Delete textbook?`}>
+                <DeleteTextbook id={textbook.id} disableDeleteModal={disableDeleteModal} />
+              </SushiModal>
           </div>
         </aside>
 
@@ -124,7 +118,7 @@ export default function TextbookEdit() {
           {pageName === "New Page" ? 
           <>
           <div>
-            <Link href={"/textbooks/" + textbook.id} >
+            <Link passHref href={"/textbooks/" + textbook.id} >
               <button className="sushi-button">Save</button>
             </Link>
             <button onClick={() => setpageName("First Page")} className="sushi-button" style={{marginRight:'0.5em'}} >Cancel</button>
@@ -132,10 +126,10 @@ export default function TextbookEdit() {
           </>
           :
             <div>
-              <Link href={"/textbooks/" + textbook.id} >
+              <Link passHref href={"/textbooks/" + textbook.id} >
                 <button className="sushi-button">Save</button>
               </Link>
-              <Link href={"/textbooks/" + textbook.id} >
+              <Link passHref href={"/textbooks/" + textbook.id} >
                 <button className="sushi-button" style={{marginRight:'0.5em'}}>Delete page</button>
               </Link>
             </div>

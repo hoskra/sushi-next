@@ -8,7 +8,6 @@ import StarRating from '../../components/StarRating'
 import Favourite from '../../components/Favourite'
 import HeadComponent from '../../components/HeadComponent'
 
-import { data } from '../../constants/data'
 import TextbookMenu from "../../components/TextbookMenu";
 import SideSushiModal from '../../components/SideSushiModal'
 import SelectedMenu from '../../components/selectedmenu/index';
@@ -16,9 +15,16 @@ import SelectedMenu from '../../components/selectedmenu/index';
 
 export default function TextbookView() {
   const router = useRouter()
+  const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
-  let textbook = data.filter(x => { if(x.id == router.query.id)  return x})[0]
+  const txs = useSelector((state) => state.textbook.value)
+  let textbook;
 
+  const setTextbook = () => {
+    if(isReady) {
+      textbook = txs.filter(x => { if(x.id == router.query.id)  return x})[0]
+    }    
+  }
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const enableModal = (e) => {
@@ -43,22 +49,23 @@ export default function TextbookView() {
       author: "Helmut",
       modification: "14/10/2021",
       stars: "2",
+      private: false,
     }
   }
 
   return (
     <>
+      {setTextbook()}
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
 
       <div className={styles.textbookContainer}>
         <aside>
+          <TextbookMenu sendPageName={sendPageName}/>
           { loggedIn && textbook.author == "Helmut" &&
           <Link href={"/textbooks/edit/" + textbook.id} passHref>
             <button className="sushi-button">Edit</button>
           </Link>
           }
-
-          <TextbookMenu sendPageName={sendPageName}/>
         </aside>
         <div className={styles.textbookView}>
           <h1 className={styles.title}>{textbook.title}</h1>
