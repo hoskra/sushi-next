@@ -7,64 +7,37 @@ import Link from 'next/link'
 import StarRating from '../../components/StarRating'
 import Favourite from '../../components/Favourite'
 import HeadComponent from '../../components/HeadComponent'
-
 import TextbookMenu from "../../components/TextbookMenu";
-import SideSushiModal from '../../components/SideSushiModal'
-import SelectedMenu from '../../components/selectedmenu/index';
+import PageContent from "../../components/PageContent";
 
+import { dummyTextbook } from '../../constants/data';
 
 export default function TextbookView() {
   const router = useRouter()
-  const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
   const txs = useSelector((state) => state.textbook.value)
-  let textbook;
+  let textbook = txs.filter(x => { if (x.id == router.query.id) return x })[0]
 
-  const setTextbook = () => {
-    if(isReady) {
-      textbook = txs.filter(x => { if(x.id == router.query.id)  return x})[0]
-    }    
-  }
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  if (textbook == undefined) textbook = dummyTextbook;
+  const [pageName, setpageName] = React.useState(textbook.pages[0].name);
+  const [pageContent, setPageContent] = React.useState(textbook.pages[0]);
 
-  const enableModal = (e) => {
-    e.stopPropagation();
-    setIsOpen(true);
-  }
-
-  const disableModal = (e) => {
-    e.stopPropagation();
-    setIsOpen(false);
-  }
-
-  const [pageName, setpageName] = React.useState("First Page");
-  const sendPageName = (name)  => {
+  const sendPageName = (name) => {
     setpageName(name)
-  }
-
-  if(textbook == undefined) {
-    textbook = {
-      id: 4,
-      title: "Zahradničení",
-      author: "Helmut",
-      modification: "14/10/2021",
-      stars: "2",
-      private: false,
-    }
+    setPageContent(textbook.pages.filter(x => { if(x.name == name) return x})[0]);
   }
 
   return (
     <>
-      {setTextbook()}
-      <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook"/>
+      <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook" />
 
       <div className={styles.textbookContainer}>
         <aside>
-          <TextbookMenu sendPageName={sendPageName}/>
-          { loggedIn && textbook.author == "Helmut" &&
-          <Link href={"/textbooks/edit/" + textbook.id} passHref>
-            <button className="sushi-button">Edit</button>
-          </Link>
+          <TextbookMenu sendPageName={sendPageName} pages={textbook.pages} />
+          {loggedIn && textbook.author == "Helmut" &&
+            <Link href={"/textbooks/edit/" + textbook.id} passHref>
+              <button className="sushi-button">Edit</button>
+            </Link>
           }
         </aside>
         <div className={styles.textbookView}>
@@ -73,26 +46,11 @@ export default function TextbookView() {
             {loggedIn && <Favourite />}
           </div>
           <span className={styles.author}>by {textbook.author}</span>
-          <StarRating numOfStars={textbook.stars}/>
+          <StarRating numOfStars={textbook.stars} />
           <h3 className={styles.pageName}>{pageName}</h3>
           <div className={styles.pageContent}>
-          <SelectedMenu  items={['search', 'add']}>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            Nullam rhoncus aliquam metus. Aliquam erat volutpat.&nbsp;</SelectedMenu><span onClick={(e) => enableModal(e)} className={styles.term}>Pellentesque ipsum.</span>
-            <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={'Pellentesque ipsum.'}>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam. Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis Curabitur sagittis hendrerit ante.</p>
-            </SideSushiModal><SelectedMenu className={styles.pageContent} items={['search', 'add']}>Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam.
-             Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.
-             Integer malesuada. In laoreet, magna id viverra tincidunt, sem odio bibendum justo,
-             vel imperdiet sapien wisi sed libero. Cum sociis natoque penatibus et magnis
-             Curabitur sagittis hendrerit ante.
-             Fusce nibh. Nam sed tellus id magna elementum tincidunt. Fusce
-             suscipit libero eget elit. Donec quis nibh at felis congue commodo.
-             Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor.
-             Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Aliquam erat volutpat.
-             Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus.
-             </SelectedMenu>
-             </div>
+            <PageContent page={pageContent} />
+          </div>
         </div>
       </div>
     </>

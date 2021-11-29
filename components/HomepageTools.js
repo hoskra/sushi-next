@@ -50,7 +50,16 @@ export default function HomepageTools() {
       userId: 0,
       tab: [0, 2],
       private: isPrivate,
-      deleted: false
+      deleted: false,
+      pages: [
+        {
+          name: "New Page",
+          content: "",
+          selected: "",
+          meaning: ""
+        },
+  
+      ]
      }));
      router.push(`/textbooks/edit/${getHighestId}`);
   }

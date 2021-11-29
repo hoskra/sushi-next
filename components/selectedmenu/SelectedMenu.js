@@ -143,13 +143,13 @@ class SelectedMenu extends Component {
   }
 
   render() {
-    return (<div>
-      <div id={`_selectedText${this.state.id}`}>{this.props.children}</div>
-      <div id={`_beacon${this.state.id}`} style={this.state.subMenu}>
+    return (<span>
+      <span id={`_selectedText${this.state.id}`}>{this.props.children}</span>
+      <span id={`_beacon${this.state.id}`} style={this.state.subMenu}>
         {this.addItems()}
-      </div>
+      </span>
       <div style={this.state.caret} />
-    </div>);
+    </span>);
   }
 }
 

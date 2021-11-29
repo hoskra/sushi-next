@@ -17,12 +17,12 @@ export default function Term() {
         <h1 className={styles.title}>{name}</h1>
         <textarea key="1" className="sushi-input" defaultValue="" />
         <div className={styles.termActions}>
-            <Link href="/vocabulary" passHref>
+            {/* <Link href="/vocabulary" passHref> */}
               <button onClick={() => router.back()} className="sushi-button">Cancel</button>
-            </Link>
-            <Link href="/vocabulary" passHref>
+            {/* </Link> */}
+            {/* <Link href="/vocabulary" passHref> */}
               <button onClick={() => router.back()} className="sushi-button">Save</button>
-            </Link>
+            {/* </Link> */}
         </div>
       </div>
     </>

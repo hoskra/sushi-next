@@ -12,9 +12,7 @@ export default function User() {
   const router = useRouter()
   const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
-
   const id = router.query.id;
-  console.log(id)
 
   let user = userHelmut;
 

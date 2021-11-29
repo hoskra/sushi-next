@@ -11,8 +11,6 @@ import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-
-
 export default function Vocabulary() {
   const router = useRouter()
   const [letter, setLetter] = useState('A');
@@ -61,7 +59,6 @@ export default function Vocabulary() {
             <span>Only added by me</span>
             <Toggle />
           </div>
-          {console.log( )}
           <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} 
             options={txs.map(it => ({
               value: it.id,
