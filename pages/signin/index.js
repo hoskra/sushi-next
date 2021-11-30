@@ -9,8 +9,11 @@ import { logIn } from '../../redux/userSlice'
 import { myTextbooks } from '../../redux/tabSlice'
 import HeadComponent from '../../components/HeadComponent'
 
+import { changeName } from "../../redux/pageNameSlice";
+
 export default function SignIn() {
   const dispatch = useDispatch()
+  dispatch(changeName("Sign in"));
 
   return (
     <>

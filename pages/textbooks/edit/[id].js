@@ -1,14 +1,17 @@
 import React from "react";
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import styles from '../../../styles/TextbookEdit.module.scss'
 import HeadComponent from '../../../components/HeadComponent'
 import TextbookMenu from '../../../components/TextbookMenu'
 import { dummyTextbook } from '../../../constants/data'
 
+import { changeName } from "../../../redux/pageNameSlice";
+
 export default function TextbookEdit() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [activeItem, setActiveItem] = React.useState(0);
   const txs = useSelector((state) => state.textbook.value)
@@ -17,6 +20,8 @@ export default function TextbookEdit() {
   if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);
   const [textareaVal, setTextareaVal] = React.useState(textbook.pages[0].content);
+
+  dispatch(changeName(textbook.title));
 
   const sendPageName = (name) => {
     setpageName(name);

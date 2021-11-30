@@ -7,9 +7,11 @@ import { faGoogle, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-ic
 
 import { logIn } from '../../redux/userSlice'
 import HeadComponent from '../../components/HeadComponent'
+import { changeName } from "../../redux/pageNameSlice";
 
 export default function SignUp() {
   const dispatch = useDispatch()
+  dispatch(changeName("Sign up"));
 
   return (
     <>

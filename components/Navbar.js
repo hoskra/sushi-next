@@ -10,28 +10,40 @@ import { trending } from '../redux/tabSlice'
 
 export default function Navbar() {
   const loggedIn = useSelector((state) => state.user.value)
+  const pageName = useSelector((state) => state.pageName.value)
   const dispatch = useDispatch()
 
   return (
       <nav className={styles.menu}>
         <div className={styles.container}>
-          <Link href="/">
-            <a>
-              <h1>SUSHI Textbooks</h1>
-            </a>
-          </Link>
-        <div className={styles.menu_items}>
-          {
-            loggedIn &&
-            <Link href="/user/0">
+          <ul>
+            <li>
+            <Link href="/">
               <a>
-                <span>User</span>
-                <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
+                <h1>SUSHI Textbooks</h1>
               </a>
             </Link>
+            </li>
+            <li>
+              <h2>{pageName}</h2>
+            </li>
+          </ul>
+        <ul className={styles.menu_items}>
+          {
+            loggedIn &&
+            // pageName !== "Helmut Větvička" &&
+              <li>
+              <Link href="/user/0">
+                <a>
+                  <span>Helmut</span>
+                  <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
+                </a>
+              </Link>
+              </li>
           }
           {
             loggedIn ?
+            <li>
             <Link href="/">
               <a onClick={() => {
                 dispatch(logOut());
@@ -41,12 +53,17 @@ export default function Navbar() {
                 <FontAwesomeIcon className={styles.login} icon={faSignInAlt} />
               </a>
             </Link>
+            </li>
             :
-            <Link href="/signin">
-              <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
-            </Link>
+            <li>
+              {(pageName !== "Sign in" && pageName !== "Sign up") &&
+              <Link href="/signin">
+                <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+              </Link>
+              }
+            </li>
           }
-        </div>
+        </ul>
       </div>
     </nav>
   )

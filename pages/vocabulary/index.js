@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import styles from '../../styles/Vocabulary.module.scss'
 import colorStyles from '../../styles/variables.module.scss'
@@ -11,7 +11,12 @@ import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import { changeName } from "../../redux/pageNameSlice";
+
+
 export default function Vocabulary() {
+  const dispatch = useDispatch();
+  dispatch(changeName("Vocabulary"));
   const router = useRouter()
   const [letter, setLetter] = useState('A');
   let txs = useSelector((state) => state.textbook.value)

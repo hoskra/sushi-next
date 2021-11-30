@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TextbookCard from '../components/TextbookCard'
 import HomepageTools from '../components/HomepageTools'
 import HeadComponent from '../components/HeadComponent'
 
+import { changeName } from "../redux/pageNameSlice";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  dispatch(changeName(""));
   const [query, setQuery] = useState('');
   const tabState = useSelector((state) => state.tab.value)
   const txs = useSelector((state) => state.textbook.value)
 
   return (
     <>
-    <HeadComponent title="SUSHI Textbooks" description="SuperUltraSonicHyperInteractive TextBook"/>
+    <HeadComponent title="Textbooks" description="SuperUltraSonicHyperInteractive TextBook"/>
 
     <div>
       <div className="search-bar-container">

@@ -1,14 +1,19 @@
 import { useRouter } from 'next/router'
+import { useDispatch } from "react-redux";
 
 import styles from '../../styles/Textbook.module.scss'
 import React, { useState } from "react";
 import Link from 'next/link'
 
 import HeadComponent from "../../components/HeadComponent";
+import { changeName } from "../../redux/pageNameSlice";
 
 export default function Term() {
+  const dispatch = useDispatch();
   const router = useRouter()
   const name = router.query.name
+
+  dispatch(changeName("Create a Term"));
 
   return (
     <>

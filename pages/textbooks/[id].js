@@ -1,7 +1,8 @@
 import React from "react";
 import styles from '../../styles/Textbook.module.scss'
 import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+
 import Link from 'next/link'
 
 import StarRating from '../../components/StarRating'
@@ -11,8 +12,11 @@ import TextbookMenu from "../../components/TextbookMenu";
 import PageContent from "../../components/PageContent";
 
 import { dummyTextbook } from '../../constants/data';
+import { changeName } from "../../redux/pageNameSlice";
+
 
 export default function TextbookView() {
+  const dispatch = useDispatch();
   const router = useRouter()
   const [activeItem, setActiveItem] = React.useState(0);
   const loggedIn = useSelector((state) => state.user.value)
@@ -22,6 +26,8 @@ export default function TextbookView() {
   if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);
   const [pageContent, setPageContent] = React.useState(textbook.pages[0]);
+
+  dispatch(changeName(textbook.title));
 
   const sendPageName = (name) => {
     setpageName(name)

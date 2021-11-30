@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {useRouter} from 'next/router';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 import styles from '../../styles/User.module.scss'
 import HeadComponent from '../../components/HeadComponent'
@@ -8,7 +8,10 @@ import TextbookCard from '../../components/TextbookCard'
 
 import { users, userHelmut } from '../../constants/data';
 
+import { changeName } from "../../redux/pageNameSlice";
+
 export default function User() {
+  const dispatch = useDispatch();
   const router = useRouter()
   const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
@@ -19,6 +22,7 @@ export default function User() {
   const setUser = () => {
     if(isReady) {
       user = users.filter(x => { if(x.id == id)  return x})[0]
+      dispatch(changeName(user.name));
     }
   }
   const txs = useSelector((state) => state.textbook.value)
