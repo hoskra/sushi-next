@@ -10,10 +10,11 @@ import { dummyTextbook } from '../../../constants/data'
 
 export default function TextbookEdit() {
   const router = useRouter();
+  const [activeItem, setActiveItem] = React.useState(0);
   const txs = useSelector((state) => state.textbook.value)
   let textbook = txs.filter(x => { if (x.id == router.query.id) return x })[0];
 
-  if (textbook == undefined) textbook = dummyTextbook;  
+  if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);
   const [textareaVal, setTextareaVal] = React.useState(textbook.pages[0].content);
 
@@ -39,7 +40,8 @@ export default function TextbookEdit() {
     <>
       <HeadComponent title={"SUSHI | " + textbook.title} description="SuperUltraSonicHyperInteractive TextBook" />
       <div className={styles.textbookContainer}>
-        <TextbookMenu textbook={textbook} pages={textbook.pages} sendPageName={sendPageName} isEdit={true} />
+        <TextbookMenu textbook={textbook} pages={textbook.pages}
+        sendPageName={sendPageName} isEdit={true} setActiveItem={setActiveItem} activeItem={activeItem} />
 
         <div className={styles.textbookView}>
 
@@ -52,7 +54,11 @@ export default function TextbookEdit() {
                 <Link passHref href={"/textbooks/" + textbook.id} >
                   <button className="sushi-button">Save</button>
                 </Link>
-                <button onClick={() => setpageName("First Page")} className="sushi-button" style={{ marginRight: '0.5em' }} >Cancel</button>
+                <button onClick={() => {
+                  sendPageName(textbook.pages[0].name);
+                  setActiveItem(0);
+                }}
+                className="sushi-button" style={{ marginRight: '0.5em' }} >Cancel</button>
               </div>
             </>
             :

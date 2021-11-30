@@ -7,6 +7,10 @@
   display: grid;
   grid-row-gap: 1em;
   margin: 1em 0;
+
+  span {
+    text-align: center;
+  }
 }
 
 .collaboratorImage {

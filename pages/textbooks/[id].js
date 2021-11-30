@@ -14,6 +14,7 @@ import { dummyTextbook } from '../../constants/data';
 
 export default function TextbookView() {
   const router = useRouter()
+  const [activeItem, setActiveItem] = React.useState(0);
   const loggedIn = useSelector((state) => state.user.value)
   const txs = useSelector((state) => state.textbook.value)
   let textbook = txs.filter(x => { if (x.id == router.query.id) return x })[0]
@@ -40,7 +41,7 @@ export default function TextbookView() {
 
       <div className={styles.textbookContainer}>
         <aside>
-          <TextbookMenu sendPageName={sendPageName} pages={textbook.pages} />
+          <TextbookMenu sendPageName={sendPageName} pages={textbook.pages} setActiveItem={setActiveItem} activeItem={activeItem} />
           {loggedIn && authors.includes(textbook.author) &&
             <Link href={"/textbooks/edit/" + textbook.id} passHref>
               <button className="sushi-button">Edit</button>

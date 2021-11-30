@@ -16,6 +16,9 @@ export default function Collaborators(onClose) {
       <h2>Collaborators</h2>
       <div className={styles.collaboratorsList}>
       {
+        collabs.length === 0 && <span>No Collaborators yet.</span>
+      }
+      {
         collaborators.filter(collaborator => {
           if (collabs && collabs.includes(collaborator.id)) {
             return collaborator;

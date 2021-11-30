@@ -10,7 +10,7 @@ import SideSushiModal from './SideSushiModal';
 import DeleteTextbook from './DeleteTextbook';
 import SushiModal from './SushiModal';
 
-export default function TextbookMenu({ isEdit, sendPageName, textbook, pages }) {
+export default function TextbookMenu({ isEdit, sendPageName, textbook, pages, setActiveItem, activeItem }) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [deleteModalIsOpen, setDeleteModalOpen] = React.useState(false);
 
@@ -24,7 +24,6 @@ export default function TextbookMenu({ isEdit, sendPageName, textbook, pages }) 
     setIsOpen(false);
   }
 
-
   const enableDeleteModal = (e) => {
     e.stopPropagation();
     setDeleteModalOpen(true);
@@ -35,9 +34,9 @@ export default function TextbookMenu({ isEdit, sendPageName, textbook, pages }) 
     setDeleteModalOpen(false);
   }
 
+
   return (
     <aside className={styles.menu}>
-
       {isEdit &&
         <>
           <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)}>
@@ -64,11 +63,24 @@ export default function TextbookMenu({ isEdit, sendPageName, textbook, pages }) 
       <ul className={`${styles.pageMenu} ${isEdit ? styles.pageMenuEdit : ''}`}>
         {
           pages.map((page, index) => (
-            <li key={index} onClick={() => sendPageName(page.name)}>{page.name}</li>
+            <li key={index}
+            onClick={() => {
+              sendPageName(page.name);
+              setActiveItem(index);
+            }}
+              className={index === activeItem ? styles.active : ''} >
+              {page.name}
+            </li>
           ))
         }
         {
-          isEdit && <li onClick={() => sendPageName("New Page")}>Create New Page <FontAwesomeIcon icon={faPlus} /></li>
+          isEdit && <li onClick={() => {
+            sendPageName("New Page");
+            setActiveItem(pages.lenght);
+          }}
+          className={pages.lenght === activeItem ? styles.active : ''}>
+            Create New Page <FontAwesomeIcon icon={faPlus} />
+          </li>
         }
       </ul>
 
@@ -77,16 +89,12 @@ export default function TextbookMenu({ isEdit, sendPageName, textbook, pages }) 
           <Link href="/vocabulary" passHref>
             <button className="sushi-button">Vocabulary</button>
           </Link>
-          <button className="sushi-button" onClick={(e) => {
-            enableDeleteModal(e);
-          }}>
-            Delete</button>
+          <button className="sushi-button" onClick={(e) => { enableDeleteModal(e); }}> Delete</button>
           <SushiModal isOpen={deleteModalIsOpen} closeModal={(e) => disableDeleteModal(e)} title={`Delete textbook?`}>
             <DeleteTextbook id={textbook.id} disableDeleteModal={disableDeleteModal} />
           </SushiModal>
         </div>
       }
-
 
     </aside>
   )
