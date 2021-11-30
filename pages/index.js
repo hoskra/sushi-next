@@ -30,11 +30,11 @@ export default function Home() {
     <div className="textbook-list">
     {
       Object.entries(txs).filter((textbook) => {
-          if(textbook[1].tab.includes(tabState) && textbook[1].deleted == false) {
-            if (query === '') {
-              return textbook[1];
-            } else if (textbook[1].title.toLowerCase().includes(query.toLowerCase())
-             || textbook[1].author.toLowerCase().includes(query.toLowerCase())) {
+          if(textbook[1].deleted == false ) {
+            if (query === ''  ) {
+              if( textbook[1].tab.includes(tabState))
+                return textbook[1];
+            } else if (textbook[1].title.toLowerCase().includes(query.toLowerCase()) || textbook[1].author.toLowerCase().includes(query.toLowerCase()) ) {
               return textbook[1];
             }
           }
