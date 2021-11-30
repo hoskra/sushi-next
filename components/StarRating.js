@@ -3,20 +3,20 @@ import styles from '../styles/Textbook.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
+import { addStar, removeStar } from "../redux/textbookSlice";
+import { useDispatch } from "react-redux";
 
-const StarRating = ({numOfStars}) => {
+const StarRating = ({id}) => {
+  const dispatch = useDispatch();
   const loggedIn = useSelector((state) => state.user.value);
-  const [rating, setRating] = useState(false);
-  let [stars, setStars] = useState(numOfStars);
+  const isSet = useSelector((state) => state.textbook.value[id].starSet);
+  const stars = useSelector((state) => state.textbook.value[id].stars);
 
   const processRating = () => {
-    stars = parseInt(stars);
-    if (rating === false) {
-      setRating(true)
-      setStars(stars+=1)
+    if (isSet === false) {
+      dispatch(addStar(id));
     } else {
-      setRating(false)
-      setStars(stars-=1)
+      dispatch(removeStar(id));
     }
   }
 
@@ -25,7 +25,7 @@ const StarRating = ({numOfStars}) => {
           {stars}
           <button
             type="button"
-            className={rating ? styles.on : styles.off}
+            className={isSet ? styles.on : styles.off}
             onClick={() => loggedIn && processRating()}
           >
            <FontAwesomeIcon icon={faStar} />

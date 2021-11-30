@@ -54,7 +54,7 @@ export default function TextbookView() {
             {loggedIn && <Favourite selected={textbook.favourite} id={textbook.id}/>}
           </div>
           <span className={styles.author}>by {textbook.author}</span>
-          <StarRating numOfStars={textbook.stars} />
+          <StarRating id={textbook.id}/>
           <h3 className={styles.pageName}>{pageName}</h3>
           <div className={styles.pageContent}>
             <PageContent page={pageContent} />

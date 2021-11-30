@@ -35,7 +35,6 @@ export default function HomepageTools() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let name = e.target[0].value;
-    console.log(txs)
     let getId = txs.length;
     let getCurrentDate = new Date();
     let date = getCurrentDate.toLocaleDateString('en-GB');

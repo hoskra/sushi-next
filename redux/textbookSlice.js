@@ -29,10 +29,18 @@ export const textbookSlice = createSlice({
       state.value[action.payload].favourite = false;
       state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 3);
     },
+    addStar: (state, action) => {
+      state.value[action.payload].stars++;
+      state.value[action.payload].starSet = true;
+    },
+    removeStar: (state, action) => {
+      state.value[action.payload].stars--;
+      state.value[action.payload].starSet = false;
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTextbook, deleteTextbook, addFavourite, removeFavourite } = textbookSlice.actions
+export const { addTextbook, deleteTextbook, addFavourite, removeFavourite, addStar, removeStar } = textbookSlice.actions
 
 export default textbookSlice.reducer

@@ -27,7 +27,6 @@ export default function Home() {
     <div className="textbook-list">
     {
       Object.entries(txs).filter((textbook) => {
-        console.log(textbook[1])
           if(textbook[1].tab.includes(tabState) && textbook[1].deleted == false) {
             if (query === '') {
               return textbook[1];
