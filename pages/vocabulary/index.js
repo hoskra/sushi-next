@@ -15,7 +15,7 @@ export default function Vocabulary() {
   const router = useRouter()
   const [letter, setLetter] = useState('A');
   let txs = useSelector((state) => state.textbook.value)
-  txs = txs.filter(textbook=>textbook.userId==0);
+  txs = Object.entries(txs).filter(textbook=>textbook[1].userId==0);
 
   let createArrayAtoZ = _ => {
     return Array
@@ -28,7 +28,6 @@ export default function Vocabulary() {
       ...provided,
       borderRadius: '1em',
       borderColor: '#9f90ff',
-     
     }),
     menu: (provided, state) => ({
       ...provided,
@@ -61,8 +60,8 @@ export default function Vocabulary() {
           </div>
           <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu} 
             options={txs.map(it => ({
-              value: it.id,
-              label: it.title
+              value: it[1].id,
+              label: it[1].title
             }))}
             />
           <div>

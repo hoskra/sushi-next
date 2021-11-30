@@ -19,11 +19,10 @@ export default function User() {
   const setUser = () => {
     if(isReady) {
       user = users.filter(x => { if(x.id == id)  return x})[0]
-    }    
+    }
   }
   const txs = useSelector((state) => state.textbook.value)
-  let textbooks = txs.filter(x => { if(x.userId == id)  return x})
-  textbooks = textbooks.filter(x => { if(x.deleted == false)  return x})
+  let textbooks = Object.entries(txs).filter(x => { if((x[1].userId == id) && (x[1].deleted == false))   return x[1]})
 
   const [list, setComponent] = useState(true);
 
@@ -50,7 +49,7 @@ export default function User() {
         { list ?
           <div className={styles.textbook_list}>
             {textbooks.map((textbook, index) => (
-              <TextbookCard key={index} data={textbook} />
+              <TextbookCard key={index} data={textbook[1]} />
             ))}
             { textbooks.length == 0 && <div className={styles.no_textbooks}>User has no textbooks yet.</div> }
           </div>

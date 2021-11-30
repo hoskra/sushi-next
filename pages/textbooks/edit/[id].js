@@ -12,7 +12,7 @@ export default function TextbookEdit() {
   const router = useRouter();
   const [activeItem, setActiveItem] = React.useState(0);
   const txs = useSelector((state) => state.textbook.value)
-  let textbook = txs.filter(x => { if (x.id == router.query.id) return x })[0];
+  let textbook = txs[router.query.id]
 
   if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);

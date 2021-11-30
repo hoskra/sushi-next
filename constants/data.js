@@ -31,9 +31,12 @@ export const dummyPages = [
   },
 ]
 
-export const textbooks = [
-  {
-    id: 1,
+// https://redux.js.org/usage/structuring-reducers/normalizing-state-shape
+
+export const textbooks = {
+  byId: {
+  "0": {
+    id: 0,
     title: "Atlas hub",
     author: "Helmut",
     modification: "24/10/2021",
@@ -42,6 +45,7 @@ export const textbooks = [
     tab: [0, 2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: [
       {
         name: "Hřib Smrkový",
@@ -63,8 +67,8 @@ export const textbooks = [
       },
     ]
   },
-  {
-    id: 2,
+ "1": {
+    id: 1,
     title: "Hitchhiker's Guide to the Galaxy",
     author: "Douglas Adams",
     modification: "5/3/1979",
@@ -73,6 +77,7 @@ export const textbooks = [
     tab: [0, 3],
     private: false,
     deleted: false,
+    favourite: true,
     pages: [
       {
         name: "The Hitchhikers Guide to the Galaxy",
@@ -106,8 +111,8 @@ export const textbooks = [
       },
     ]
   },
-  {
-    id: 3,
+ "2": {
+    id: 2,
     title: "Lorem ipsum dolor sit amet",
     author: "Giovanni",
     modification: "12/12/135",
@@ -116,6 +121,7 @@ export const textbooks = [
     tab: [0, 1],
     private: false,
     deleted: false,
+    favourite: false,
     pages: [
       {
         name: "Lorem ipsum",
@@ -149,8 +155,8 @@ export const textbooks = [
       },
     ]
   },
-  {
-    id: 4,
+ "3": {
+    id: 3,
     title: "Zahradničení",
     author: "Helmut",
     modification: "14/10/2021",
@@ -159,10 +165,11 @@ export const textbooks = [
     tab: [0, 2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 5,
+ "4": {
+    id: 4,
     title: "Brum",
     author: "Helmut",
     modification: "11/11/2021",
@@ -171,10 +178,11 @@ export const textbooks = [
     tab: [0, 2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 6,
+ "5": {
+    id: 5,
     title: "Vžum",
     author: "Helmut",
     modification: "11/11/2021",
@@ -183,10 +191,11 @@ export const textbooks = [
     tab: [0, 2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 7,
+ "6": {
+    id: 6,
     title: "Mlask",
     author: "Helmut",
     modification: "11/11/2021",
@@ -195,10 +204,11 @@ export const textbooks = [
     tab: [2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 8,
+ "7": {
+    id: 7,
     title: "Mňouk",
     author: "Helmut",
     modification: "11/11/2021",
@@ -207,10 +217,11 @@ export const textbooks = [
     tab: [2],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 9,
+ "8": {
+    id: 8,
     title: "Nesnesitelná lehkost bytí",
     author: "Milan Kundera",
     modification: "11/11/2021",
@@ -219,10 +230,11 @@ export const textbooks = [
     tab: [3],
     private: false,
     deleted: false,
+    favourite: true,
     pages: dummyPages
   },
-  {
-    id: 10,
+  "9": {
+      id: 9,
     title: "Gödel, Escher, Bach",
     author: "Douglas Hofstadter",
     modification: "11/11/2021",
@@ -231,10 +243,11 @@ export const textbooks = [
     tab: [3],
     private: false,
     deleted: false,
+    favourite: true,
     pages: dummyPages
   },
-  {
-    id: 11,
+  "10": {
+      id: 10,
     title: "Co budeme vařit",
     author: "Helmutka",
     modification: "10/10/2021",
@@ -243,10 +256,11 @@ export const textbooks = [
     tab: [1],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-  {
-    id: 12,
+  "11": {
+      id: 11,
     title: "Bez práce nejsou koláče",
     author: "Šéf",
     modification: "10/10/2021",
@@ -255,9 +269,11 @@ export const textbooks = [
     tab: [1],
     private: false,
     deleted: false,
+    favourite: false,
     pages: dummyPages
   },
-]
+  }
+}
 
 
 export const dummyTextbook = {
@@ -268,6 +284,7 @@ export const dummyTextbook = {
   stars: "2",
   private: false,
   deleted: false,
+  favourite: true,
   pages: [
     {
       name: "First Page",

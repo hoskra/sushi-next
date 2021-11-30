@@ -17,7 +17,7 @@ export default function TextbookView() {
   const [activeItem, setActiveItem] = React.useState(0);
   const loggedIn = useSelector((state) => state.user.value)
   const txs = useSelector((state) => state.textbook.value)
-  let textbook = txs.filter(x => { if (x.id == router.query.id) return x })[0]
+  let textbook = txs[router.query.id]
 
   if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);
@@ -51,7 +51,7 @@ export default function TextbookView() {
         <div className={styles.textbookView}>
           <h1 className={styles.title}>{textbook.title}</h1>
           <div className={styles.favourite}>
-            {loggedIn && <Favourite />}
+            {loggedIn && <Favourite selected={textbook.favourite} id={textbook.id}/>}
           </div>
           <span className={styles.author}>by {textbook.author}</span>
           <StarRating numOfStars={textbook.stars} />

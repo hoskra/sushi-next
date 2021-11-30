@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { textbooks } from '../constants/data';
 
 const initialState = {
-  value: textbooks,
+  value: textbooks.byId,
 }
 
 export const textbookSlice = createSlice({
@@ -10,21 +10,29 @@ export const textbookSlice = createSlice({
   initialState,
   reducers: {
     addTextbook: (state, action) => {
-      state.value.push(action.payload);
+      return {
+        ...state,
+        value: {
+          ...state.value,
+          [action.payload.id]: action.payload,
+        },
+      }
     },
     deleteTextbook: (state, action) => {
-      let newArr = state.value;
-      let changed = newArr.filter(item => item.id === action.payload)[0];
-      newArr = newArr.filter(item => item.id !== action.payload);
-      changed.deleted = true;
-      newArr.push(changed);
-
-      state.value = newArr;
+      state.value[action.payload].deleted = true;
+    },
+    addFavourite: (state, action) => {
+      state.value[action.payload].favourite = true;
+      state.value[action.payload].tab.push(3);
+    },
+    removeFavourite: (state, action) => {
+      state.value[action.payload].favourite = false;
+      state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 3);
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTextbook, deleteTextbook } = textbookSlice.actions
+export const { addTextbook, deleteTextbook, addFavourite, removeFavourite } = textbookSlice.actions
 
 export default textbookSlice.reducer

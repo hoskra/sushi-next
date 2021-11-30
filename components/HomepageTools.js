@@ -9,7 +9,6 @@ import Tabs from "./Tabs";
 import SushiModal from "./SushiModal";
 import modalStyles from '../styles/Modal.module.scss'
 import Toggle from "./Toggle";
-import Link from "next/link";
 
 import { addTextbook } from "../redux/textbookSlice";
 
@@ -20,6 +19,8 @@ export default function HomepageTools() {
   const dispatch = useDispatch();
   const [isPrivate, setIsPrivate] = useState(false);
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  let txs = Object.entries(textbooks);
 
   const enableModal = (e) => {
     e.stopPropagation();
@@ -34,34 +35,30 @@ export default function HomepageTools() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let name = e.target[0].value;
-
-    let getHighestId = textbooks.reduce((acc, curr) => {
-      return Math.max(acc, curr.id);
-    }, 0);
-    getHighestId++;
+    console.log(txs)
+    let getId = txs.length;
     let getCurrentDate = new Date();
     let date = getCurrentDate.toLocaleDateString('en-GB');
     dispatch(addTextbook({
-      id: getHighestId,
-      title: name,
-      author: "Helmut",
-      modification: date,
-      stars: "0",
-      userId: 0,
-      tab: [0, 2],
-      private: isPrivate,
-      deleted: false,
-      pages: [
-        {
-          name: "New Page",
-          content: "",
-          selected: "",
-          meaning: ""
-        },
-  
-      ]
-     }));
-     router.push(`/textbooks/edit/${getHighestId}`);
+        id: getId,
+        title: name,
+        author: "Helmut",
+        modification: date,
+        stars: "0",
+        userId: 0,
+        tab: isPrivate ? [2] : [0, 2],
+        private: isPrivate,
+        deleted: false,
+        pages: [
+          {
+            name: "New Page",
+            content: "",
+            selected: "",
+            meaning: ""
+          },
+        ]
+      }));
+     router.push(`/textbooks/edit/${getId}`);
   }
 
   const setPrivate = (e) => {
