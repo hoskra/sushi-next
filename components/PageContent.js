@@ -3,7 +3,7 @@ import SideSushiModal from './SideSushiModal';
 import SelectedMenu from './selectedmenu';
 import styles from '../styles/Textbook.module.scss';
 
-export default function PageContent({page}) {
+export default function PageContent({ page }) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   const enableModal = (e) => {
@@ -24,24 +24,36 @@ export default function PageContent({page}) {
 
 
   index = pageContent.indexOf(selected);
-  beforeSelected = pageContent.slice(0, index);
-  afterSelected = pageContent.slice(index + selected.length);
+  if (index !== -1) {
+    beforeSelected = pageContent.slice(0, index);
+    afterSelected = pageContent.slice(index + selected.length);
+  }
+
+  console.log(index)
 
   return (
     <>
-      <SelectedMenu items={['search', 'add']}>
-        {beforeSelected}
-      </SelectedMenu>
+      {index !== -1 ?
+        <>
+          <SelectedMenu items={['search', 'add']}>
+            {beforeSelected}
+          </SelectedMenu>
 
-      <span onClick={(e) => enableModal(e)} className={styles.term}>{selected}</span>
+          <span onClick={(e) => enableModal(e)} className={styles.term}>{selected}</span>
 
-      <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={selected}>
-        {meaning}
-      </SideSushiModal>
+          <SideSushiModal isOpen={modalIsOpen} closeModal={(e) => disableModal(e)} title={selected}>
+            {meaning}
+          </SideSushiModal>
 
-      <SelectedMenu className={styles.pageContent} items={['search', 'add']}>
-        {afterSelected}
-      </SelectedMenu>
+          <SelectedMenu className={styles.pageContent} items={['search', 'add']}>
+            {afterSelected}
+          </SelectedMenu>
+        </>
+        :
+        <>
+          {pageContent}
+        </>
+      }
     </>
   );
 }
