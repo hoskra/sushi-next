@@ -34,7 +34,10 @@
       font-size: 1.1em;
       font-weight: normal;
       margin-left: 5px;
-
+      width: 150px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       // &::before {
       //   content: ">";
       //   font-size: 0.8em;

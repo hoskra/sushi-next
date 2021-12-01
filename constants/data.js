@@ -287,6 +287,7 @@ export const dummyTextbook = {
 export const paths = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
 
 export const userHelmut = {
+  id: 0,
   name: "Helmut Větvička",
   password: "helmut@vetvicka.com",
   email: "helmut@vetvicka.com",
@@ -297,30 +298,37 @@ export const users = [
   {
     id: 0,
     name: "Helmut Větvička",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 1,
     name: "Douglas Adams",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 2,
     name: "Giovanni",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 3,
     name: "Milan Kundera",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 4,
     name: "Douglas Hofstadter",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 5,
     name: "Helmutka",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
   {
     id: 6,
     name: "Šéf",
+    description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
   },
 ]
 

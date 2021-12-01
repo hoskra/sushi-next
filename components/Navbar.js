@@ -11,6 +11,9 @@ import { trending } from '../redux/tabSlice'
 export default function Navbar() {
   const loggedIn = useSelector((state) => state.user.value)
   const pageName = useSelector((state) => state.pageName.value)
+  let currentUser = useSelector(state => state.user.data)?.name?.split(' ')[0];
+  currentUser = currentUser ? currentUser : 'Helmut'
+
   const dispatch = useDispatch()
 
   return (
@@ -35,7 +38,7 @@ export default function Navbar() {
               <li>
               <Link href="/user/0">
                 <a>
-                  <span>Helmut</span>
+                  <span>{currentUser}</span>
                   <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
                 </a>
               </Link>
