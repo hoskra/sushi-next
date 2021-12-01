@@ -29,8 +29,6 @@ export default function PageContent({ page }) {
     afterSelected = pageContent.slice(index + selected.length);
   }
 
-  console.log(index)
-
   return (
     <>
       {index !== -1 ?
