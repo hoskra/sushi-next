@@ -50,6 +50,7 @@ export default function HomepageTools() {
         deleted: false,
         pages: [
           {
+            id: 0,
             name: "New Page",
             content: "",
             selected: "",

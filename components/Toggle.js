@@ -1,12 +1,24 @@
 import { useState } from 'react';
 import styles from '../styles/Toggle.module.scss'
 
-export default function Toggle({setPrivate, isChecked}) {
+import { useDispatch } from 'react-redux';
+import { makePrivate, makePublic } from '../redux/textbookSlice';
+
+export default function Toggle({setPrivate, isChecked, id}) {
+  const dispatch = useDispatch();
   const [isInputChecked, setChecked] = useState (isChecked);
 
   const processOnChange = (e) => {
-    if(setPrivate)
+    if(setPrivate) {
       setPrivate(e.target.checked);
+    } 
+
+    if(isInputChecked) {
+      dispatch(makePublic(id));
+    } else {
+      dispatch(makePrivate(id));
+    }
+
     setChecked(e.target.checked);
   }
 

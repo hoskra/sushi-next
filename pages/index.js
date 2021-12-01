@@ -11,7 +11,10 @@ import { changeName } from "../redux/pageNameSlice";
 
 export default function Home() {
   const dispatch = useDispatch();
-  dispatch(changeName(""));
+  React.useEffect(() => {
+    dispatch(changeName(""));
+  }, [dispatch]);
+
   const [query, setQuery] = useState('');
   const tabState = useSelector((state) => state.tab.value)
   const txs = useSelector((state) => state.textbook.value)

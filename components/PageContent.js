@@ -20,10 +20,13 @@ export default function PageContent({page}) {
   let selected = page.selected;
   let meaning = page.meaning;
 
-  let index = pageContent.indexOf(selected);
-  let beforeSelected = pageContent.slice(0, index);
-  let afterSelected = pageContent.slice(index + selected.length);
-  
+  let index, beforeSelected, afterSelected;
+
+
+  index = pageContent.indexOf(selected);
+  beforeSelected = pageContent.slice(0, index);
+  afterSelected = pageContent.slice(index + selected.length);
+
   return (
     <>
       <SelectedMenu items={['search', 'add']}>

@@ -16,7 +16,10 @@ import { changeName } from "../../redux/pageNameSlice";
 
 export default function Vocabulary() {
   const dispatch = useDispatch();
-  dispatch(changeName("Vocabulary"));
+  React.useEffect(() => {
+    dispatch(changeName("Vocabulary"));
+  }, [dispatch]);
+
   const router = useRouter()
   const [letter, setLetter] = useState('A');
   let txs = useSelector((state) => state.textbook.value)

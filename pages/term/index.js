@@ -2,8 +2,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from "react-redux";
 
 import styles from '../../styles/Textbook.module.scss'
-import React, { useState } from "react";
-import Link from 'next/link'
+import React from "react";
 
 import HeadComponent from "../../components/HeadComponent";
 import { changeName } from "../../redux/pageNameSlice";
@@ -13,7 +12,10 @@ export default function Term() {
   const router = useRouter()
   const name = router.query.name
 
-  dispatch(changeName("Create a Term"));
+  React.useEffect(() => {
+    dispatch(changeName("Create a Term"));
+  }, [dispatch]);
+
 
   return (
     <>
@@ -22,12 +24,8 @@ export default function Term() {
         <h1 className={styles.title}>{name}</h1>
         <textarea key="1" className="sushi-input" defaultValue="" />
         <div className={styles.termActions}>
-            {/* <Link href="/vocabulary" passHref> */}
-              <button onClick={() => router.back()} className="sushi-button">Cancel</button>
-            {/* </Link> */}
-            {/* <Link href="/vocabulary" passHref> */}
-              <button onClick={() => router.back()} className="sushi-button">Save</button>
-            {/* </Link> */}
+          <button onClick={() => router.back()} className="sushi-button">Cancel</button>
+          <button onClick={() => router.back()} className="sushi-button">Save</button>
         </div>
       </div>
     </>

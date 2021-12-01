@@ -1,17 +1,19 @@
-import styles from '../../styles/Signin.module.scss'
-
+import React from 'react'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
+import styles from '../../styles/Signin.module.scss'
 import { logIn } from '../../redux/userSlice'
 import HeadComponent from '../../components/HeadComponent'
 import { changeName } from "../../redux/pageNameSlice";
 
 export default function SignUp() {
   const dispatch = useDispatch()
-  dispatch(changeName("Sign up"));
+  React.useEffect(() => {
+    dispatch(changeName("Sign up"));
+  }, [dispatch]);
 
   return (
     <>

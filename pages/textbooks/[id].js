@@ -25,13 +25,14 @@ export default function TextbookView() {
 
   if (textbook == undefined) textbook = dummyTextbook;
   const [pageName, setpageName] = React.useState(textbook.pages[0].name);
-  const [pageContent, setPageContent] = React.useState(textbook.pages[0]);
 
-  dispatch(changeName(textbook.title));
+  React.useEffect(() => {
+    dispatch(changeName(textbook.title));
+  }, [dispatch, textbook.title]);
 
-  const sendPageName = (name) => {
-    setpageName(name)
-    setPageContent(textbook.pages.filter(x => { if(x.name == name) return x})[0]);
+  const setId = (id) => {
+    setActiveItem(id);
+    setpageName(textbook.pages[id].name);
   }
 
   const authors = [
@@ -47,7 +48,7 @@ export default function TextbookView() {
 
       <div className={styles.textbookContainer}>
         <aside>
-          <TextbookMenu sendPageName={sendPageName} pages={textbook.pages} setActiveItem={setActiveItem} activeItem={activeItem} />
+          <TextbookMenu setId={setId} pages={textbook.pages} id={textbook.id}  setActiveItem={setActiveItem} activeItem={activeItem} />
           {loggedIn && authors.includes(textbook.author) &&
             <Link href={"/textbooks/edit/" + textbook.id} passHref>
               <button className="sushi-button">Edit</button>
@@ -63,7 +64,7 @@ export default function TextbookView() {
           <StarRating id={textbook.id}/>
           <h3 className={styles.pageName}>{pageName}</h3>
           <div className={styles.pageContent}>
-            <PageContent page={pageContent} />
+            <PageContent page={textbook.pages[activeItem]} />
           </div>
         </div>
       </div>

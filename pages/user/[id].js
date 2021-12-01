@@ -22,9 +22,13 @@ export default function User() {
   const setUser = () => {
     if(isReady) {
       user = users.filter(x => { if(x.id == id)  return x})[0]
-      dispatch(changeName(user.name));
     }
   }
+  
+  React.useEffect(() => {
+    dispatch(changeName(user.name));
+  }, [dispatch, user.name]);
+
   const txs = useSelector((state) => state.textbook.value)
   let textbooks = Object.entries(txs).filter(x => { if((x[1].userId == id) && (x[1].deleted == false))   return x[1]})
 

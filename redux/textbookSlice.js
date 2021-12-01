@@ -37,10 +37,39 @@ export const textbookSlice = createSlice({
       state.value[action.payload].stars--;
       state.value[action.payload].starSet = false;
     },
+    removePage: (state, action) => {
+      state.value[action.payload.textbookId].pages = 
+      state.value[action.payload.textbookId].pages.filter(page => page.id !== action.payload.pageId);
+    },
+    addPage: (state, action) => {
+      state.value[action.payload.textbookId].pages.push(action.payload.page);
+    },
+    editPage: (state, action) => {
+      let id;
+      for(let i=0; i < state.value[action.payload.textbookId].pages.length; i++) {
+        if(state.value[action.payload.textbookId].pages[i].id === action.payload.pageId) {
+          id = i;
+          break;
+        }
+      }
+      state.value[action.payload.textbookId].pages[id].name = action.payload.name;
+      state.value[action.payload.textbookId].pages[id].content = action.payload.content;
+    },
+    makePublic: (state, action) => {
+      state.value[action.payload].private = false;
+    },
+    makePrivate: (state, action) => {
+      state.value[action.payload].private = true;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTextbook, deleteTextbook, addFavourite, removeFavourite, addStar, removeStar } = textbookSlice.actions
+export const { addTextbook, deleteTextbook, 
+               addFavourite, removeFavourite,
+               addStar, removeStar,
+               addPage, removePage, editPage,
+               makePublic, makePrivate
+            } = textbookSlice.actions
 
 export default textbookSlice.reducer
