@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useDispatch } from "react-redux";
+import Link from 'next/link'
 
 import styles from '../../styles/Textbook.module.scss'
 import React from "react";
@@ -25,7 +26,11 @@ export default function Term() {
         <textarea key="1" className="sushi-input" defaultValue="" />
         <div className={styles.termActions}>
           <button onClick={() => router.back()} className="sushi-button">Cancel</button>
-          <button onClick={() => router.back()} className="sushi-button">Save</button>
+          <Link href="/textbooks/12" >
+            <a>
+              <button className="sushi-button">Save</button>
+            </a>
+          </Link>
         </div>
       </div>
     </>

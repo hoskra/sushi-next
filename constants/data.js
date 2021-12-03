@@ -266,6 +266,56 @@ export const textbooks = {
     favourite: false,
     pages: dummyPages
   },
+  "12": {
+    id: 12,
+    title: "Hitchhiker's Guide to the Galaxy",
+    author: "Douglas Adams",
+    modification: "5/3/1979",
+    stars: 42,
+    starSet: false,
+    userId: 1,
+    tab: [],
+    private: false,
+    deleted: false,
+    favourite: true,
+    pages: [
+      {
+        id: 0,
+        name: "The Hitchhikers Guide to the Galaxy",
+        content: "The beginning. Like I wrote earlier, it all starts seconds before the Earth is demolished to make way for a galactic freeway, Arthur Dent is plucked off the planet by his friend the Alien Ford Prefect who, for the last fifteen years, has been posing as an out-of-work actor. Hopefully, they didn’t forget to take a towel.",
+        selected: "Alien",
+        meaning: "Ufoun"
+      },
+      {
+        id: 1,
+        name: "The Restaurant at the End of the Universe",
+        content: "Arthur Dent and his comrades in arms hurtle across space desperately in search of a place to eat. Their destination? The ultimate hot spot for an evening of apocalyptic entertainment and fine dining, where the food literally speaks for itself.",
+        selected: "",
+        meaning: ""
+      },
+      {
+        id: 2,
+        name: "Life, the Universe and Everything",
+        content: "Sick of looking at the night sky above their heads, the unhappy inhabitants of planet Krikkit plan to destroy the Universe. Only Arthur and his travelling companions stand between the white killer robots of Krikkit and their goal of total annihilation.",
+        selected: "",
+        meaning: ""
+      },
+      {
+        id: 3,
+        name: "So Long, and Thanks for All the Fish",
+        content: "Back on Earth, Arthur Dent is ready to believe that the past years were all just a figment of his imagination. But a gift-wrapped fishbowl with a cryptic inscription, the mysterious disappearance of Earth’s dolphins, and the discovery of his battered copy of The Hitchhiker’s Guide to the Galaxy all conspire to give Arthur the sneaking suspicion that something otherworldly is indeed going on.",
+        selected: "",
+        meaning: ""
+      },
+      {
+        id: 4,
+        name: "Mostly Harmless",
+        content: "Arthur Dent makes the terrible mistake of starting to enjoy life a bit, and immediately all hell breaks loose. This is where the original novels written by Douglas Adams end.",
+        selected: "",
+        meaning: ""
+      },
+    ]
+  },
   }
 }
 
