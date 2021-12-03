@@ -2,9 +2,11 @@ import React from 'react';
 import SideSushiModal from './SideSushiModal';
 import SelectedMenu from './selectedmenu';
 import styles from '../styles/Textbook.module.scss';
+import { useSelector } from 'react-redux';
 
 export default function PageContent({ page }) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const textbookId = useSelector(state => state.textbook.currentTextbook);
 
   const enableModal = (e) => {
     e.stopPropagation();
@@ -33,7 +35,7 @@ export default function PageContent({ page }) {
     <>
       {index !== -1 ?
         <>
-          <SelectedMenu items={['search', 'add']}>
+          <SelectedMenu key={1} textbookId={textbookId} name={selected} pageId={page.id} items={['search', 'add']}>
             {beforeSelected}
           </SelectedMenu>
 
@@ -43,7 +45,7 @@ export default function PageContent({ page }) {
             {meaning}
           </SideSushiModal>
 
-          <SelectedMenu className={styles.pageContent} items={['search', 'add']}>
+          <SelectedMenu key={2} textbookId={textbookId} name={selected} pageId={page.id} className={styles.pageContent} items={['search', 'add']}>
             {afterSelected}
           </SelectedMenu>
         </>

@@ -13,7 +13,7 @@ import PageContent from "../../components/PageContent";
 
 import { dummyTextbook } from '../../constants/data';
 import { changeName } from "../../redux/pageNameSlice";
-
+import { setCurrentTextbook, setCurrentPage } from "../../redux/textbookSlice";
 
 export default function TextbookView() {
   const dispatch = useDispatch();
@@ -28,10 +28,12 @@ export default function TextbookView() {
 
   React.useEffect(() => {
     dispatch(changeName(textbook.title));
+    dispatch(setCurrentTextbook(textbook.id));
   }, [dispatch, textbook.title]);
 
   const setId = (id) => {
     setActiveItem(id);
+    dispatch(setCurrentPage(textbook.pages[id].id));
     setpageName(textbook.pages[id].name);
   }
 

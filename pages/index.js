@@ -19,7 +19,6 @@ export default function Home() {
   return (
     <>
     <HeadComponent title="Textbooks" description="SuperUltraSonicHyperInteractive TextBook"/>
-
     <div>
       <div className="search-bar-container">
         <FontAwesomeIcon icon={faSearch} />

@@ -3,6 +3,8 @@ import { textbooks } from '../constants/data';
 
 const initialState = {
   value: textbooks.byId,
+  currentTextbook: 8,
+  currentPage: 8,
 }
 
 export const textbookSlice = createSlice({
@@ -60,16 +62,30 @@ export const textbookSlice = createSlice({
     },
     makePrivate: (state, action) => {
       state.value[action.payload].private = true;
+    },
+    createTerm: (state, action) => {
+      let pid = action.payload.pageId;
+      let tid = action.payload.textbookId;
+      state.value[tid].pages[pid].selected = action.payload.selected;
+      state.value[tid].pages[pid].meaning = action.payload.meaning;
+    },
+    setCurrentTextbook: (state, action) => {
+      state.currentTextbook = action.payload;
+
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTextbook, deleteTextbook, 
+export const { addTextbook, deleteTextbook,
                addFavourite, removeFavourite,
                addStar, removeStar,
                addPage, removePage, editPage,
-               makePublic, makePrivate
+               makePublic, makePrivate,
+               createTerm, setCurrentTextbook, setCurrentPage
             } = textbookSlice.actions
 
 export default textbookSlice.reducer

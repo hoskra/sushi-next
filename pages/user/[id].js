@@ -16,7 +16,9 @@ export default function User() {
   const { isReady } = useRouter();
   const loggedIn = useSelector((state) => state.user.value)
   const currentUser = useSelector(state => state.user.data);
-  
+  const textbookId = useSelector(state => state.textbook.currentTextbook);
+  const pageId = useSelector(state => state.textbook.currentPage);
+
   const id = router.query.id;
 
   let user = currentUser;
