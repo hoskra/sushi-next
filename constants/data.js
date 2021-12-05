@@ -218,7 +218,7 @@ export const textbooks = {
     stars: 11,
     starSet: false,
     userId: 3,
-    tab: [3],
+    tab: [],
     private: false,
     deleted: false,
     favourite: false,
