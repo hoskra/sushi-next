@@ -276,7 +276,7 @@ export const textbooks = {
     userId: 1,
     tab: [],
     private: false,
-    deleted: false,
+    deleted: true,
     favourite: true,
     pages: [
       {
