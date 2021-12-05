@@ -339,7 +339,7 @@ export const paths = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
 export const userHelmut = {
   id: 0,
   name: "Helmut Větvička",
-  password: "helmut@vetvicka.com",
+  password: "helmut123",
   email: "helmut@vetvicka.com",
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam rhoncus aliquam metus. Aliquam erat volutpat. Pellentesque ipsum. Pellentesque arcu. Sed elit dui, pellentesque a, faucibus vel, interdum nec, diam."
 }
