@@ -221,7 +221,7 @@ export const textbooks = {
     tab: [3],
     private: false,
     deleted: false,
-    favourite: true,
+    favourite: false,
     pages: dummyPages
   },
   "9": {
