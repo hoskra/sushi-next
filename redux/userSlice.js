@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { userHelmut } from '../constants/data';
 
 const initialState = {
-  value: false,
+  value: true,
   data: userHelmut
 }
 
