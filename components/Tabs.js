@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from 'react-redux'
 
 import { useDispatch } from 'react-redux'
-import { trending, sharedWithMe, myTextbooks, favourites } from '../redux/tabSlice'
+import { all, trending, sharedWithMe, myTextbooks, favourites } from '../redux/tabSlice'
 
 
 export default function Tabs() {
@@ -12,12 +12,13 @@ export default function Tabs() {
 
   return (
     <ul className="tabs">
-      <li onClick={() => dispatch(trending())} className={tabState == 0 ? "active" : undefined}>Trending</li>
+      <li onClick={() => dispatch(all())} className={tabState == 0 ? "active" : undefined}>All</li>
+      <li onClick={() => dispatch(trending())} className={tabState == 1 ? "active" : undefined}>Trending</li>
       {loggedIn ?
         <>
-        <li onClick={() => dispatch(sharedWithMe())} className={tabState == 1 ? "active" : undefined}>Shared with me</li>
-        <li onClick={() => dispatch(myTextbooks())} className={tabState == 2 ? "active" : undefined}>My Textbooks</li>
-        <li onClick={() => dispatch(favourites())} className={tabState == 3 ? "active" : undefined}>Favourites</li>
+        <li onClick={() => dispatch(sharedWithMe())} className={tabState == 2 ? "active" : undefined}>Shared with me</li>
+        <li onClick={() => dispatch(myTextbooks())} className={tabState == 3 ? "active" : undefined}>My Textbooks</li>
+        <li onClick={() => dispatch(favourites())} className={tabState == 4 ? "active" : undefined}>Favourites</li>
         </>
       : null}
     </ul>
