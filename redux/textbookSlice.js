@@ -23,11 +23,11 @@ export const textbookSlice = createSlice({
     },
     addFavourite: (state, action) => {
       state.value[action.payload].favourite = true;
-      state.value[action.payload].tab.push(3);
+      state.value[action.payload].tab.push(4);
     },
     removeFavourite: (state, action) => {
       state.value[action.payload].favourite = false;
-      state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 3);
+      state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 4);
     },
     addStar: (state, action) => {
       state.value[action.payload].stars++;

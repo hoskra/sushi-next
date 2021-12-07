@@ -23,10 +23,10 @@ const Favourite = ({selected, id}) => {
   return (
     <div
       type="button"
-      className={favourite ? styles.on : styles.off}
+      className={styles.on}
       onClick={() => processFavourite()}
       >
-      { favourite ? <span>Favourite</span> : <span>Make favourite</span> }
+      { favourite ? <span>Remove from favorites</span> : <span>Add to favourites</span> }
       <FontAwesomeIcon icon={faBookmark} />
     </div>
   );
