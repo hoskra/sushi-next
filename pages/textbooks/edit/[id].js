@@ -28,7 +28,7 @@ export default function TextbookEdit() {
     setActiveItem(id);
     
     if(id === textbook.pages.lenght) {
-      setpageName('New Page');
+      setpageName('');
       setTextareaVal('');
     } 
     else {
@@ -78,7 +78,7 @@ export default function TextbookEdit() {
 
         <div className={styles.textbookView}>
 
-          <input type="text" value={pageName} onChange={(e) => processOnChangeName(e)}  className={styles.newPage} />
+          <input type="text" value={pageName} placeholder="New page" onChange={(e) => processOnChangeName(e)}  className={styles.newPage} />
           <textarea className="sushi-input" onChange={(e) => processOnChange(e)} value={textareaVal} />
 
           {activeItem === textbook.pages.lenght ?
