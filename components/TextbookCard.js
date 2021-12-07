@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faHeart as farFaStar} from '@fortawesome/free-regular-svg-icons'
 import  StarRating  from './StarRating'
+import Moment from 'moment';
 
 export default function TextbookCard(props) {
   return (
