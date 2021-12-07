@@ -88,7 +88,7 @@ export default function TextbookMenu({ isEdit, setId, sendPageName, textbook, pa
       </ul>
       {isEdit &&
         <div className={styles.action}>
-          <Link href="/vocabulary" passHref>
+          <Link href={"/vocabulary?id=" + textbook.id } passHref>
             <button className={"sushi-button " + styles.vocabulary }>Vocabulary</button>
           </Link>
           <button className="sushi-button" onClick={(e) => { enableDeleteModal(e); }}> Delete textbook</button>

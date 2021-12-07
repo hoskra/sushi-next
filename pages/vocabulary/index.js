@@ -13,20 +13,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { changeName } from "../../redux/pageNameSlice";
 
-function DDDdisplay({name}) {
-    console.log(name)
-  return (
-    <span>{name}</span>
-  )
-}
-
 export default function Vocabulary() {
   const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(changeName("Vocabulary"));
-  }, [dispatch]);
-
   const router = useRouter()
+  const id = router.query.id;
   const [letter, setLetter] = useState('A');
   let txs = useSelector((state) => state.textbook.value)
   txs = Object.entries(txs).filter(textbook=>textbook[1].userId==0);
@@ -90,9 +80,16 @@ export default function Vocabulary() {
     label: it[1].title
   }))
 
+
   optionsTxs.forEach(element => {
       options.push(element)
   });
+
+  React.useEffect(() => {
+    dispatch(changeName("Vocabulary"));
+    setSelected(id ? id : "all")
+
+  }, [dispatch]);
 
   return (
     <>
@@ -110,6 +107,7 @@ export default function Vocabulary() {
           </div> */}
           <Select height='80px' styles={customStyles} placeholder="Pick a textbook" className={styles.pageMenu}
             options={options} onChange={(e) => setSelected(e.value)}
+            value = {options[options.findIndex(option => option.value == selected)]}
             />
           <div>
             <button className="sushi-button" onClick={() => router.back()}>Back</button>
