@@ -3,6 +3,7 @@ import styles from '../styles/Layout.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
 import { faUserAlt } from '@fortawesome/free-solid-svg-icons'
+import { faBook } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
 import { logOut } from '../redux/userSlice'
 import { useDispatch } from 'react-redux'
@@ -32,6 +33,18 @@ export default function Navbar() {
             </li>
           </ul>
         <ul className={styles.menu_items}>
+        {
+            loggedIn &&
+            // pageName !== "Helmut Větvička" &&
+              <li>
+              <Link href="/vocabulary">
+                <a>
+                  <span>Vocabulary</span>
+                  <FontAwesomeIcon className={styles.login} icon={faBook} />
+                </a>
+              </Link>
+              </li>
+          }
           {
             loggedIn &&
             // pageName !== "Helmut Větvička" &&
