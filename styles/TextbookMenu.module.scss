@@ -1,5 +1,11 @@
 @import './variables.module.scss';
 
+.icons:hover {
+  // Your code here
+  opacity: .5;
+  cursor: pointer; 
+}
+
 .menu {
   h1 {
     grid-column: 1/2;

@@ -94,7 +94,7 @@ export default function TextbookEdit() {
                 <button onClick={() => {
                   setId(0);
                 }}
-                className={"sushi-button " + styles.cancel }  style={{ marginRight: '0.5em' }} >Cancel</button>
+                className="sushi-button "  style={{ marginRight: '0.5em' }} >Cancel</button>
               </div>
             </>
             :
@@ -105,7 +105,7 @@ export default function TextbookEdit() {
                 }}>Save</button>
               </Link>
               <Link passHref href={"/textbooks/edit/" + textbook.id} >
-                <button className={"sushi-button " + styles.delete } style={{ marginRight: '0.5em' }}
+                <button className="sushi-button " style={{ marginRight: '0.5em' }}
                   onClick={()=> {
                     deletePageFromTextbook();
                     setId(0);

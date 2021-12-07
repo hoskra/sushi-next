@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from '../styles/Textbook.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
 import { addStar, removeStar } from "../redux/textbookSlice";
 import { useDispatch } from "react-redux";
@@ -28,7 +28,7 @@ const StarRating = ({id}) => {
             className={isSet ? styles.on : styles.off}
             onClick={() => loggedIn && processRating()}
           >
-           <FontAwesomeIcon icon={faStar} />
+           <FontAwesomeIcon icon={faHeart} />
           </button>
       </span>
   );

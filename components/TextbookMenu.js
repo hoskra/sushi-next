@@ -52,7 +52,7 @@ export default function TextbookMenu({ isEdit, setId, sendPageName, textbook, pa
 
           <div className={styles.group}>
             Collaborators
-            <FontAwesomeIcon icon={faUserPlus} size="2x" onClick={(e) => enableModal(e)} />
+            <FontAwesomeIcon className={styles.icons} icon={faUserPlus} size="2x" onClick={(e) => enableModal(e)} />
           </div>
 
           <div className={styles.group}>
@@ -62,6 +62,15 @@ export default function TextbookMenu({ isEdit, setId, sendPageName, textbook, pa
         </>
       }
       <ul className={`${styles.pageMenu} ${isEdit ? styles.pageMenuEdit : ''}`}>
+      {isEdit &&
+        <li  className={pages.lenght === activeItem ? styles.active : ''}
+          onClick={() => {
+            // setActiveItem(pages.lenght);
+            // sendPageName("New Page");
+            setId(pages.lenght);
+        }} >
+          New Page <FontAwesomeIcon icon={faPlus} />
+        </li> }
         {
           pages.map((page, index) => (
             <li key={index}
@@ -75,22 +84,14 @@ export default function TextbookMenu({ isEdit, setId, sendPageName, textbook, pa
             </li>
           ))
         }
-      {isEdit &&
-        <li  className={pages.lenght === activeItem ? styles.active : ''}
-          onClick={() => {
-            // setActiveItem(pages.lenght);
-            // sendPageName("New Page");
-            setId(pages.lenght);
-        }} >
-          New Page <FontAwesomeIcon icon={faPlus} />
-        </li> }
+      
       </ul>
       {isEdit &&
         <div className={styles.action}>
           <Link href="/vocabulary" passHref>
             <button className={"sushi-button " + styles.vocabulary }>Vocabulary</button>
           </Link>
-          <button className={"sushi-button " + styles.delete } onClick={(e) => { enableDeleteModal(e); }}> Delete</button>
+          <button className="sushi-button" onClick={(e) => { enableDeleteModal(e); }}> Delete textbook</button>
           <SushiModal isOpen={deleteModalIsOpen} closeModal={(e) => disableDeleteModal(e)} title={`Delete textbook?`}>
             <DeleteTextbook id={textbook.id} disableDeleteModal={disableDeleteModal} />
           </SushiModal>

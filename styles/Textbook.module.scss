@@ -107,7 +107,9 @@
       margin: 0;
     }
     .term {
-      background-color:lighten($color: $secondary-color, $amount: 35%);
+     // background-color:lighten($color: $secondary-color, $amount: 40%);
+      color: $secondary-color;
+      text-decoration: underline;
       &:hover {
         cursor: pointer;
       }
