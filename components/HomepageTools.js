@@ -45,7 +45,7 @@ export default function HomepageTools() {
         modification: date,
         stars: "0",
         userId: 0,
-        tab: isPrivate ? [2] : [0, 2],
+        tab: isPrivate ? [3] : [0, 3],
         private: isPrivate,
         deleted: false,
         pages: [

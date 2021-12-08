@@ -38,9 +38,11 @@ export default function Home() {
 
     <HomepageTools/>
     <div className="textbook-list">
-      <button className="sushi-button" onClick={(e) => setDescending(!descending)}>
-        <FontAwesomeIcon icon={descending ? faArrowAltCircleDown : faArrowAltCircleUp} />
-      </button>
+      <div id="sort_container">
+        <button className="sushi-button" onClick={(e) => setDescending(!descending)}>
+          <FontAwesomeIcon icon={descending ? faArrowAltCircleDown : faArrowAltCircleUp} />
+        </button>
+      </div>
     {
       Object.entries(txs).filter((textbook) => {
           if (query != '' && tabState != 0) {
@@ -70,9 +72,9 @@ export default function Home() {
                 moment(a[1].modification, 'DD/MM/YYYY').isBefore(moment(b[1].modification, 'DD/MM/YYYY'))
               : moment(a[1].modification, 'DD/MM/YYYY').isAfter(moment(b[1].modification, 'DD/MM/YYYY'))
           })
-          .map((textbook, index) => (
+          .map((textbook, index) => 
           <TextbookCard key={index} data={textbook[1]} />
-        ))
+        )
       }
       </div>
     </div>
