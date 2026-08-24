@@ -19,47 +19,69 @@ export const textbookSlice = createSlice({
       }
     },
     deleteTextbook: (state, action) => {
-      state.value[action.payload].deleted = true;
+      if (state.value[action.payload]) {
+        state.value[action.payload].deleted = true;
+      }
     },
     addFavourite: (state, action) => {
-      state.value[action.payload].favourite = true;
-      state.value[action.payload].tab.push(4);
+      if (state.value[action.payload]) {
+        state.value[action.payload].favourite = true;
+        state.value[action.payload].tab.push(4);
+      }
     },
     removeFavourite: (state, action) => {
-      state.value[action.payload].favourite = false;
-      state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 4);
+      if (state.value[action.payload]) {
+        state.value[action.payload].favourite = false;
+        state.value[action.payload].tab = state.value[action.payload].tab.filter(tab => tab !== 4);
+      }
     },
     addStar: (state, action) => {
-      state.value[action.payload].stars++;
-      state.value[action.payload].starSet = true;
+      if (state.value[action.payload]) {
+        state.value[action.payload].stars++;
+        state.value[action.payload].starSet = true;
+      }
     },
     removeStar: (state, action) => {
-      state.value[action.payload].stars--;
-      state.value[action.payload].starSet = false;
+      if (state.value[action.payload]) {
+        state.value[action.payload].stars--;
+        state.value[action.payload].starSet = false;
+      }
     },
     removePage: (state, action) => {
-      state.value[action.payload.textbookId].pages = 
-      state.value[action.payload.textbookId].pages.filter(page => page.id !== action.payload.pageId);
+      if (state.value[action.payload.textbookId]) {
+        state.value[action.payload.textbookId].pages =
+        state.value[action.payload.textbookId].pages.filter(page => page.id !== action.payload.pageId);
+      }
     },
     addPage: (state, action) => {
-      state.value[action.payload.textbookId].pages.push(action.payload.page);
+      if (state.value[action.payload.textbookId]) {
+        state.value[action.payload.textbookId].pages.push(action.payload.page);
+      }
     },
     editPage: (state, action) => {
-      let id;
-      for(let i=0; i < state.value[action.payload.textbookId].pages.length; i++) {
-        if(state.value[action.payload.textbookId].pages[i].id === action.payload.pageId) {
-          id = i;
-          break;
+      if (state.value[action.payload.textbookId]) {
+        let id;
+        for(let i=0; i < state.value[action.payload.textbookId].pages.length; i++) {
+          if(state.value[action.payload.textbookId].pages[i].id === action.payload.pageId) {
+            id = i;
+            break;
+          }
+        }
+        if (id !== undefined) {
+          state.value[action.payload.textbookId].pages[id].name = action.payload.name;
+          state.value[action.payload.textbookId].pages[id].content = action.payload.content;
         }
       }
-      state.value[action.payload.textbookId].pages[id].name = action.payload.name;
-      state.value[action.payload.textbookId].pages[id].content = action.payload.content;
     },
     makePublic: (state, action) => {
-      state.value[action.payload].private = false;
+      if (state.value[action.payload]) {
+        state.value[action.payload].private = false;
+      }
     },
     makePrivate: (state, action) => {
-      state.value[action.payload].private = true;
+      if (state.value[action.payload]) {
+        state.value[action.payload].private = true;
+      }
     }
   },
 })

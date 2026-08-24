@@ -27,9 +27,7 @@ export default function Term() {
         <div className={styles.termActions}>
           <button onClick={() => router.back()} className="sushi-button">Cancel</button>
           <Link href="/textbooks/12" >
-            <a>
-              <button className="sushi-button">Save</button>
-            </a>
+            <button className="sushi-button">Save</button>
           </Link>
         </div>
       </div>

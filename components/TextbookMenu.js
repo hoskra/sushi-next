@@ -45,9 +45,7 @@ export default function TextbookMenu({ isEdit, setId, sendPageName, textbook, pa
           </SideSushiModal>
 
           <Link href={"/textbooks/" + textbook.id} >
-            <a>
-              <h1>{textbook.title}</h1>
-            </a>
+            <h1>{textbook.title}</h1>
           </Link>
 
           <div className={styles.group}>

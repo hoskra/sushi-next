@@ -23,9 +23,7 @@ export default function Navbar() {
           <ul>
             <li>
             <Link href="/">
-              <a>
-                <h1>SUSHI Textbooks</h1>
-              </a>
+              <h1>SUSHI Textbooks</h1>
             </Link>
             </li>
             <li>
@@ -38,10 +36,8 @@ export default function Navbar() {
             // pageName !== "Helmut Větvička" &&
               <li>
               <Link href="/vocabulary">
-                <a>
-                  <span>Vocabulary</span>
-                  <FontAwesomeIcon className={styles.login} icon={faBook} />
-                </a>
+                <span>Vocabulary</span>
+                <FontAwesomeIcon className={styles.login} icon={faBook} />
               </Link>
               </li>
           }
@@ -50,31 +46,27 @@ export default function Navbar() {
             // pageName !== "Helmut Větvička" &&
               <li>
               <Link href="/user/0">
-                <a>
-                  <span>{currentUser}</span>
-                  <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
-                </a>
+                <span>{currentUser}</span>
+                <FontAwesomeIcon className={styles.login} icon={faUserAlt} />
               </Link>
               </li>
           }
           {
             loggedIn ?
             <li>
-            <Link href="/">
-              <a onClick={() => {
+            <Link href="/" onClick={() => {
                 dispatch(logOut());
                 dispatch(trending());
                 }}>
-                <span>Sign Out</span>
-                <FontAwesomeIcon className={styles.login} icon={faSignInAlt} />
-              </a>
+              <span>Sign Out</span>
+              <FontAwesomeIcon className={styles.login} icon={faSignInAlt} />
             </Link>
             </li>
             :
             <li>
               {(pageName !== "Sign in" && pageName !== "Sign up") &&
               <Link href="/signin">
-                <a>Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} /></a>
+                Sign in<FontAwesomeIcon className={styles.login} icon={faSignInAlt} />
               </Link>
               }
             </li>

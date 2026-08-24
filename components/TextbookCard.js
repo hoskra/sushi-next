@@ -16,9 +16,9 @@ export default function TextbookCard(props) {
                 query: {id: props.data.id},
               }}
         >
-            <a>{props.data.title}</a>
-          </Link>
-        </span>
+          {props.data.title}
+        </Link>
+      </span>
       <span className={styles.stars}><StarRating id={props.data.id}/></span>
       <span className={styles.author}>
         <Link href={{
@@ -26,7 +26,7 @@ export default function TextbookCard(props) {
                 query: {id: props.data.userId},
               }}
         >
-          <a>by {props.data.author}</a>
+          by {props.data.author}
         </Link>
       </span>
       <span className={styles.modification}>last modified {props.data.modification}</span>
